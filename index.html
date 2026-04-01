@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel de Conteúdo — Papelaria Fofa</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --pink-50: #fff0f5;
@@ -29,6 +29,9 @@
     --blue-100: #bfdbfe;
     --blue-400: #60a5fa;
     --blue-600: #1d4ed8;
+    --green-50: #f0fdf4;
+    --green-100: #bbf7d0;
+    --green-600: #16a34a;
     --gray-50: #fafaf9;
     --gray-100: #f5f5f4;
     --gray-200: #e7e5e4;
@@ -37,623 +40,324 @@
     --gray-800: #292524;
     --radius: 14px;
     --radius-sm: 8px;
-    --shadow: 0 2px 12px rgba(200,80,120,0.08);
-    --shadow-hover: 0 6px 24px rgba(200,80,120,0.14);
+    --shadow: 0 2px 12px rgba(200,80,120,.08);
+    --shadow-hover: 0 8px 32px rgba(200,80,120,.18);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     font-family: 'Nunito', sans-serif;
     background: #fff8fb;
     color: var(--gray-800);
     min-height: 100vh;
   }
-
-  /* DECORATIVE BG */
   body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     background:
-      radial-gradient(circle at 10% 10%, rgba(255,180,210,0.18) 0%, transparent 50%),
-      radial-gradient(circle at 90% 80%, rgba(196,155,255,0.12) 0%, transparent 50%),
-      radial-gradient(circle at 50% 50%, rgba(255,230,245,0.15) 0%, transparent 70%);
+      radial-gradient(circle at 10% 10%, rgba(255,180,210,.18) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(196,155,255,.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255,230,245,.15) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
-
-  .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
+  .wrapper { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 0 20px 70px; }
 
   /* HEADER */
-  .header {
-    text-align: center;
-    padding: 52px 20px 36px;
-  }
+  .header { text-align: center; padding: 52px 20px 36px; }
   .header-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--pink-50);
-    border: 1px solid var(--pink-100);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--pink-600);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--pink-50); border: 1px solid var(--pink-100);
+    border-radius: 20px; padding: 5px 16px;
+    font-size: 12px; font-weight: 800; color: var(--pink-600);
+    letter-spacing: .6px; text-transform: uppercase; margin-bottom: 16px;
   }
-  .header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 5vw, 52px);
-    color: var(--gray-800);
-    line-height: 1.1;
-    margin-bottom: 10px;
-  }
-  .header h1 em {
-    font-style: italic;
-    color: var(--pink-600);
-  }
-  .header p {
-    font-size: 16px;
-    color: var(--gray-600);
-    max-width: 480px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
+  .header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(32px,5vw,52px); line-height: 1.1; margin-bottom: 10px; }
+  .header h1 em { font-style: italic; color: var(--pink-600); }
+  .header p { font-size: 16px; color: var(--gray-600); max-width: 500px; margin: 0 auto; line-height: 1.65; }
 
   /* STATS */
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin: 28px 0 40px;
-  }
-  .stat {
-    background: white;
-    border: 1px solid var(--pink-100);
-    border-radius: var(--radius);
-    padding: 14px 22px;
-    text-align: center;
-    box-shadow: var(--shadow);
-  }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    color: var(--pink-600);
-    display: block;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: var(--gray-600);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-  }
+  .stats { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 28px 0 40px; }
+  .stat { background: white; border: 1px solid var(--pink-100); border-radius: var(--radius); padding: 14px 22px; text-align: center; box-shadow: var(--shadow); }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--pink-600); display: block; }
+  .stat-label { font-size: 11px; color: var(--gray-600); font-weight: 700; text-transform: uppercase; letter-spacing: .4px; }
 
   /* TABS */
-  .tabs-wrapper {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: 24px;
-    padding: 6px;
-    display: inline-flex;
-    gap: 4px;
-    margin: 0 auto 36px;
-    display: flex;
-    width: fit-content;
+  .tabs-wrap { display: flex; justify-content: center; margin-bottom: 38px; }
+  .tabs {
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: 26px; padding: 6px; display: flex;
+    gap: 4px; flex-wrap: wrap; justify-content: center;
     box-shadow: var(--shadow);
-    flex-wrap: wrap;
-    justify-content: center;
   }
   .tab-btn {
-    padding: 10px 22px;
-    border-radius: 18px;
-    border: none;
-    background: transparent;
-    font-family: 'Nunito', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--gray-600);
-    transition: all 0.2s;
-    white-space: nowrap;
+    padding: 10px 22px; border-radius: 20px; border: none;
+    background: transparent; font-family: 'Nunito', sans-serif;
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    color: var(--gray-600); transition: all .2s; white-space: nowrap;
   }
   .tab-btn:hover { color: var(--pink-600); background: var(--pink-50); }
   .tab-btn.active {
     background: linear-gradient(135deg, #f472a8, #c2346a);
-    color: white;
-    box-shadow: 0 4px 14px rgba(196,52,106,0.35);
+    color: white; box-shadow: 0 4px 16px rgba(196,52,106,.35);
   }
-  .tab-icon { margin-right: 6px; }
 
   /* SECTION */
   .section { display: none; }
   .section.visible { display: block; }
-
-  /* SECTION HEADER */
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 24px;
-    color: var(--gray-800);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .count-badge {
-    font-family: 'Nunito', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    background: var(--pink-100);
-    color: var(--pink-600);
-    padding: 3px 10px;
-    border-radius: 10px;
-    letter-spacing: 0.3px;
-  }
+  .section-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--gray-800); display: flex; align-items: center; gap: 10px; }
+  .count-badge { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 800; background: var(--pink-100); color: var(--pink-600); padding: 3px 10px; border-radius: 10px; }
 
   /* FILTERS */
-  .filter-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
   .filter-btn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1.5px solid var(--gray-200);
-    background: white;
-    font-family: 'Nunito', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--gray-600);
-    transition: all 0.18s;
+    padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--gray-200);
+    background: white; font-family: 'Nunito', sans-serif;
+    font-size: 12px; font-weight: 700; cursor: pointer; color: var(--gray-600); transition: all .18s;
   }
   .filter-btn:hover { border-color: var(--pink-200); color: var(--pink-600); }
-  .filter-btn.active {
-    background: var(--pink-50);
-    border-color: var(--pink-400);
-    color: var(--pink-600);
-  }
+  .filter-btn.active { background: var(--pink-50); border-color: var(--pink-400); color: var(--pink-600); }
 
   /* CARDS GRID */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 16px; }
 
   .card {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius);
-    padding: 18px 18px 14px;
-    box-shadow: var(--shadow);
-    transition: all 0.2s;
-    display: flex;
-    flex-direction: column;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: var(--radius); padding: 18px 18px 14px;
+    box-shadow: var(--shadow); transition: all .2s;
+    display: flex; flex-direction: column;
+    animation: fadeUp .4s ease both;
   }
-  .card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
-    border-color: var(--pink-200);
-  }
+  .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); border-color: var(--pink-200); }
 
   .card-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
+    display: inline-block; font-size: 10px; font-weight: 800;
+    padding: 3px 10px; border-radius: 10px;
+    margin-bottom: 10px; letter-spacing: .4px; text-transform: uppercase;
   }
   .tag-pink { background: var(--pink-50); color: var(--pink-600); border: 1px solid var(--pink-100); }
   .tag-purple { background: var(--purple-50); color: var(--purple-600); border: 1px solid var(--purple-100); }
   .tag-teal { background: var(--teal-50); color: var(--teal-600); border: 1px solid var(--teal-100); }
   .tag-amber { background: var(--amber-50); color: var(--amber-600); border: 1px solid var(--amber-100); }
   .tag-blue { background: var(--blue-50); color: var(--blue-600); border: 1px solid var(--blue-100); }
+  .tag-green { background: var(--green-50); color: var(--green-600); border: 1px solid var(--green-100); }
 
-  .card-text {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--gray-800);
-    flex: 1;
-    margin-bottom: 14px;
-  }
+  .card-text { font-size: 13.5px; line-height: 1.65; color: var(--gray-800); flex: 1; margin-bottom: 14px; }
 
   .copy-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border-radius: var(--radius-sm);
-    border: 1.5px solid var(--gray-200);
-    background: transparent;
-    font-family: 'Nunito', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    color: var(--gray-600);
-    transition: all 0.18s;
-    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 7px 13px; border-radius: var(--radius-sm);
+    border: 1.5px solid var(--gray-200); background: transparent;
+    font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700;
+    cursor: pointer; color: var(--gray-600); transition: all .18s; align-self: flex-start;
   }
   .copy-btn:hover { border-color: var(--pink-400); color: var(--pink-600); background: var(--pink-50); }
-  .copy-btn.copied {
-    background: var(--teal-50);
-    border-color: var(--teal-400);
-    color: var(--teal-600);
-  }
+  .copy-btn.copied { background: var(--teal-50); border-color: var(--teal-400); color: var(--teal-600); }
 
-  /* CAROUSEL CARDS */
-  .carousel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-
+  /* CAROUSEL */
+  .carousel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
   .carousel-card {
-    background: white;
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    transition: all 0.2s;
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: var(--radius); padding: 20px;
+    box-shadow: var(--shadow); transition: all .2s;
+    animation: fadeUp .4s ease both;
   }
-  .carousel-card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
-    border-color: var(--pink-200);
-  }
-
-  .carousel-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--gray-800);
-    margin-bottom: 14px;
-    line-height: 1.4;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .slide-list {
-    list-style: none;
-    counter-reset: slide;
-    margin-bottom: 14px;
-  }
+  .carousel-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); border-color: var(--pink-200); }
+  .carousel-title { font-size: 14px; font-weight: 700; color: var(--gray-800); margin-bottom: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 8px; }
+  .slide-list { list-style: none; margin-bottom: 14px; }
   .slide-list li {
-    counter-increment: slide;
-    font-size: 13px;
-    color: var(--gray-600);
-    padding: 7px 0;
+    font-size: 12.5px; color: var(--gray-600); padding: 6px 0;
     border-bottom: 1px dashed var(--gray-200);
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    line-height: 1.5;
+    display: flex; gap: 9px; align-items: flex-start; line-height: 1.5;
   }
   .slide-list li:last-child { border-bottom: none; }
   .slide-num {
-    flex-shrink: 0;
-    font-size: 10px;
-    font-weight: 700;
-    background: var(--pink-100);
-    color: var(--pink-600);
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1px;
+    flex-shrink: 0; font-size: 9px; font-weight: 800;
+    background: var(--pink-100); color: var(--pink-600);
+    border-radius: 50%; width: 19px; height: 19px;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
   }
 
-  /* HASHTAG CARDS */
-  .hashtag-text {
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--blue-600);
-    font-weight: 600;
-    flex: 1;
-    margin-bottom: 14px;
-    word-break: break-word;
-  }
+  /* HASHTAGS */
+  .hashtag-text { font-size: 13px; line-height: 1.9; color: var(--blue-600); font-weight: 600; flex: 1; margin-bottom: 14px; word-break: break-word; }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--pink-200), transparent);
-    margin: 40px 0;
+  /* STORIES GRID */
+  .stories-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 16px; }
+  .story-card {
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: var(--radius); padding: 18px 18px 14px;
+    box-shadow: var(--shadow); display: flex; flex-direction: column;
+    transition: all .2s; animation: fadeUp .4s ease both;
   }
+  .story-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); border-color: var(--pink-200); }
+  .story-type { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 8px; color: var(--gray-400); }
+  .story-text { font-size: 13.5px; line-height: 1.65; color: var(--gray-800); flex: 1; margin-bottom: 14px; }
+  .story-tip { font-size: 11.5px; color: var(--purple-600); background: var(--purple-50); border: 1px solid var(--purple-100); border-radius: 8px; padding: 7px 10px; margin-bottom: 12px; line-height: 1.5; }
+
+  /* REELS */
+  .reels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+  .reel-card {
+    background: white; border: 1px solid var(--gray-200);
+    border-radius: var(--radius); padding: 20px;
+    box-shadow: var(--shadow); transition: all .2s;
+    animation: fadeUp .4s ease both;
+  }
+  .reel-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); border-color: var(--pink-200); }
+  .reel-title { font-size: 14px; font-weight: 700; color: var(--gray-800); margin-bottom: 12px; }
+  .reel-row { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--gray-200); font-size: 12.5px; color: var(--gray-600); line-height: 1.5; }
+  .reel-row:last-of-type { border-bottom: none; }
+  .reel-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
 
   /* TOAST */
   .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
+    position: fixed; bottom: 30px; left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--gray-800);
-    color: white;
-    padding: 12px 22px;
-    border-radius: 24px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Nunito', sans-serif;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.2);
-    z-index: 9999;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: var(--gray-800); color: white;
+    padding: 12px 22px; border-radius: 24px;
+    font-size: 14px; font-weight: 700; font-family: 'Nunito', sans-serif;
+    box-shadow: 0 8px 28px rgba(0,0,0,.2);
+    z-index: 9999; transition: transform .3s cubic-bezier(.34,1.56,.64,1);
     pointer-events: none;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
   /* FOOTER */
-  .footer {
-    text-align: center;
-    padding: 40px 20px 0;
-    color: var(--gray-400);
-    font-size: 13px;
-  }
+  .footer { text-align: center; padding: 44px 20px 0; color: var(--gray-400); font-size: 13px; }
   .footer span { color: var(--pink-400); }
 
-  /* RESPONSIVE */
-  @media (max-width: 600px) {
-    .tabs-wrapper { padding: 4px; }
-    .tab-btn { padding: 8px 14px; font-size: 13px; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .carousel-grid { grid-template-columns: 1fr; }
-    .stats { gap: 12px; }
-  }
-
-  /* SCROLL ANIMATION */
-  .card, .carousel-card {
-    animation: fadeUp 0.4s ease both;
-  }
+  /* ANIMATION */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  @media (max-width: 600px) {
+    .tab-btn { padding: 8px 14px; font-size: 12px; }
+    .cards-grid, .carousel-grid, .stories-grid, .reels-grid { grid-template-columns: 1fr; }
+    .stats { gap: 10px; }
+  }
 </style>
 </head>
 <body>
-
 <div class="wrapper">
 
   <!-- HEADER -->
   <div class="header">
     <div class="header-badge">🎀 Papelaria Fofa</div>
     <h1>Painel de <em>Conteúdo</em></h1>
-    <p>Legendas, prompts de imagem, carrosséis e hashtags — tudo pronto pra copiar e usar</p>
+    <p>Legendas, prompts de imagem, carrosséis, hashtags, stories e roteiros de reels — tudo pronto pra copiar e usar!</p>
   </div>
 
   <!-- STATS -->
   <div class="stats">
-    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Legendas</span></div>
-    <div class="stat"><span class="stat-num">20</span><span class="stat-label">Prompts</span></div>
-    <div class="stat"><span class="stat-num">12</span><span class="stat-label">Carrosséis</span></div>
-    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Sets hashtag</span></div>
+    <div class="stat"><span class="stat-num">60</span><span class="stat-label">Legendas</span></div>
+    <div class="stat"><span class="stat-num">40</span><span class="stat-label">Prompts</span></div>
+    <div class="stat"><span class="stat-num">24</span><span class="stat-label">Carrosséis</span></div>
+    <div class="stat"><span class="stat-num">14</span><span class="stat-label">Sets Hashtag</span></div>
+    <div class="stat"><span class="stat-num">30</span><span class="stat-label">Stories</span></div>
+    <div class="stat"><span class="stat-num">16</span><span class="stat-label">Roteiros Reels</span></div>
   </div>
 
   <!-- TABS -->
-  <div style="display:flex; justify-content:center; margin-bottom:36px;">
-    <div class="tabs-wrapper">
-      <button class="tab-btn active" onclick="showTab('legendas', this)"><span class="tab-icon">✍️</span>Legendas</button>
-      <button class="tab-btn" onclick="showTab('prompts', this)"><span class="tab-icon">🖼️</span>Prompts de Imagem</button>
-      <button class="tab-btn" onclick="showTab('carrossel', this)"><span class="tab-icon">📱</span>Carrosséis</button>
-      <button class="tab-btn" onclick="showTab('hashtags', this)"><span class="tab-icon">#</span>Hashtags</button>
+  <div class="tabs-wrap">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('legendas',this)">✍️ Legendas</button>
+      <button class="tab-btn" onclick="showTab('prompts',this)">🖼️ Prompts</button>
+      <button class="tab-btn" onclick="showTab('carrossel',this)">📱 Carrosséis</button>
+      <button class="tab-btn" onclick="showTab('hashtags',this)"># Hashtags</button>
+      <button class="tab-btn" onclick="showTab('stories',this)">✨ Stories</button>
+      <button class="tab-btn" onclick="showTab('reels',this)">🎬 Reels</button>
     </div>
   </div>
 
   <!-- ===== LEGENDAS ===== -->
   <div id="legendas" class="section visible">
     <div class="section-header">
-      <div class="section-title">Legendas prontas <span class="count-badge">30</span></div>
+      <div class="section-title">Legendas prontas <span class="count-badge">60</span></div>
     </div>
     <div class="filter-row">
-      <button class="filter-btn active" onclick="filterCards('all', this)">Todas</button>
-      <button class="filter-btn" onclick="filterCards('lancamento', this)">🌸 Lançamento</button>
-      <button class="filter-btn" onclick="filterCards('promocao', this)">🏷️ Promoção</button>
-      <button class="filter-btn" onclick="filterCards('motivacional', this)">💜 Motivacional</button>
-      <button class="filter-btn" onclick="filterCards('produto', this)">📦 Produto</button>
-      <button class="filter-btn" onclick="filterCards('lifestyle', this)">✨ Lifestyle</button>
-      <button class="filter-btn" onclick="filterCards('data', this)">🎉 Datas</button>
+      <button class="filter-btn active" onclick="filterCards('all',this)">Todas</button>
+      <button class="filter-btn" onclick="filterCards('lancamento',this)">🌸 Lançamento</button>
+      <button class="filter-btn" onclick="filterCards('promocao',this)">🏷️ Promoção</button>
+      <button class="filter-btn" onclick="filterCards('motivacional',this)">💜 Motivacional</button>
+      <button class="filter-btn" onclick="filterCards('produto',this)">📦 Produto</button>
+      <button class="filter-btn" onclick="filterCards('lifestyle',this)">✨ Lifestyle</button>
+      <button class="filter-btn" onclick="filterCards('data',this)">🎉 Datas</button>
+      <button class="filter-btn" onclick="filterCards('engajamento',this)">💬 Engajamento</button>
+      <button class="filter-btn" onclick="filterCards('bastidores',this)">🎥 Bastidores</button>
+      <button class="filter-btn" onclick="filterCards('restock',this)">🔁 Restock</button>
     </div>
     <div class="cards-grid" id="legendas-grid">
 
-      <div class="card" data-cat="lancamento">
-        <span class="card-tag tag-pink">Lançamento</span>
-        <p class="card-text">Ela finalmente chegou! Nossa novidade favorita acaba de pousar no estoque e já estamos apaixonadas 🩷 Corre no link da bio pra garantir a sua antes que esgote!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- LANÇAMENTO -->
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">Ela finalmente chegou! Nossa novidade favorita acaba de pousar no estoque e já estamos apaixonadas 🩷 Corre no link da bio pra garantir a sua antes que esgote!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">Novidade no estoque! 🌸 Esse item foi pedido tantas vezes que a gente não resistiu. Disponível agora — link na bio ✨</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">Prepare sua lista de desejos porque o restock chegou! 📦🎀 Tudo que você tanto esperava está disponível de novo. Sem moderação desta vez 😄</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">Collab secreta 🤫🎀 A gente trabalhou muito tempo nessa novidade e finalmente chegou o dia de mostrar pra vocês. Amanhã tem! Ativa o sininho!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">Nova coleção temática disponível! 🌸🎀 Cada peça foi pensada com muito carinho pra combinar entre si. Desliza pra ver todos os itens dessa coleção especial.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">🚨 NOVIDADE CHEGOU! Estava ansiosa pra mostrar isso pra vocês há semanas. Esse item vai virar favorito de muita gente, pode apostar. Link na bio! 💕</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lancamento"><span class="card-tag tag-pink">Lançamento</span><p class="card-text">Prometemos e entregamos 🎀 Nossa nova linha chegou com tudo e a gente mal consegue parar de olhar. É fofo demais! Disponível agora no site — link na bio.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="lancamento">
-        <span class="card-tag tag-pink">Lançamento</span>
-        <p class="card-text">Novidade no estoque! 🌸 Esse item foi pedido tantas vezes que a gente não resistiu. Disponível agora — link na bio ✨</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- PROMOÇÃO -->
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Só hoje! Aproveita nossos preços especiais em itens selecionados 🎉 Usa o cupom FOFA10 e economiza 10% no pedido. Corre, é por tempo limitado!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Frete grátis hoje! 🚚✨ Qualquer compra acima de R$79 já vai sem custo pra você. Aproveita pra completar o estoquinho em casa 🩷</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Liquidação de fim de temporada! 🌟 Itens com até 40% de desconto. São peças únicas, quando acabar acabou. Link na bio pra ver tudo 🛍️</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Kit especial com desconto progressivo! 💛 2 itens = 10% off / 3 itens = 15% off / 4+ itens = 20% off. Monta o kit dos sonhos e economiza bastante 🛍️</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Final de semana com desconto especial! 🎀 Aproveita que a promoção vai só até domingo à meia-noite. Entra no site e garante os seus favoritos com preço camarada 💛</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Comprando 3 cadernos, o 4º é por nossa conta! 📓🎁 Essa promoção é válida esta semana e é nossa forma de agradecer o carinho de vocês. Link na bio!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="promocao"><span class="card-tag tag-amber">Promoção</span><p class="card-text">Aniversário da loja! 🎂🎉 Estamos completando mais um ano e a comemoração é com você: 15% OFF em todo o site com o cupom ANIVERSARIO. Vai aproveitar?</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="lancamento">
-        <span class="card-tag tag-pink">Lançamento</span>
-        <p class="card-text">Prepare sua lista de desejos porque o restock chegou! 📦🎀 Tudo que você tanto esperava está disponível de novo. Sem moderação desta vez 😄</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- MOTIVACIONAL -->
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">Seu cantinho de trabalho muda como você se sente durante o dia inteiro ✨ Pequenos detalhes fofos fazem uma diferença enorme na sua energia e criatividade 🌸</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">Organizar é um ato de amor próprio 🩷 Quando seu espaço está bonito e arrumado, tudo fica mais leve. Cuida do seu ambiente e ele cuida de você 🌷</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">Não subestime o poder de uma agenda bem decorada, um caderno novo e uma caneta que escreve bem 🖊️ É o começo de grandes ideias 💫</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">Você não precisa de mais disciplina. Você precisa de um ambiente que te inspire ✨ A papelaria certa transforma como você estuda, trabalha e cria 💜</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">Cada item de papelaria que você compra é um investimento em si mesma 💜 Na sua organização, na sua criatividade, no seu bem-estar. Você merece o melhor.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">Uma nova semana = uma nova chance de se organizar, criar e evoluir 🌱✨ Que seus cadernos fiquem cheios de ideias brilhantes e suas metas sejam todas riscadas. Vai com tudo! 💜</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="motivacional"><span class="card-tag tag-purple">Motivacional</span><p class="card-text">O ritual de abrir sua agenda pela manhã é um presente que você se dá todo dia 🌅📖 Planejar com carinho é se respeitar. E papelaria bonita torna isso ainda mais prazeroso 🩷</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="lancamento">
-        <span class="card-tag tag-pink">Lançamento</span>
-        <p class="card-text">Collab secreta 🤫🎀 A gente trabalhou muito tempo nessa novidade e finalmente chegou o dia de mostrar pra vocês. Amanhã tem! Ativa o sininho!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- PRODUTO -->
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Esse caderno é perfeito pra quem ama escrever à mão mas também quer tudo organizado 📓🌸 Páginas pontilhadas, capa firme e aquele cheirinho de papel novo que a gente ama.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Adesivos fofinhos que transformam qualquer coisa 🎀 Planner, caderno, garrafa, capinha — cola em tudo e fica uma gracinha. Desliza pra ver as opções!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Essa caneta gel é nosso item mais querido 🖊️✨ Escrita suave, tinta que não borra e ainda fica linda na sua mesa. Vem em 12 cores incríveis!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Kit presente perfeito para quem ama papelaria 🎁🌷 Vem com caderno, caneta e kit de adesivos — tudo embalado com muito carinho. Disponível para encomenda!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Planner semanal que cabe na bolsa 👜📅 Compacto, bonito e super funcional. Tem espaço pra metas, tarefas e até um cantinho pra doodles 🌸</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Fita washi nova coleção! 🎀 Padrões exclusivos que a gente não acha em lugar nenhum. Perfeita pra decorar, marcar páginas e personalizar tudo que você quiser.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Essa borracha kawaii não é só fofa — apaga de verdade! 🐰✏️ Sem deixar marca, sem rasgar o papel. Perfeita pra usar no dia a dia. Vai vender rápido, já avisando 😍</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="produto"><span class="card-tag tag-teal">Produto</span><p class="card-text">Marca-textos pastel: porque sublinhar coisas importantes também pode ser lindo 🌈✨ Cores suaves que não cansam a vista e ainda deixam tudo mais bonito. Disponível em kit com 6!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="lancamento">
-        <span class="card-tag tag-pink">Lançamento</span>
-        <p class="card-text">Nova coleção temática disponível! 🌸🎀 Cada peça foi pensada com muito carinho pra combinar entre si. Desliza pra ver todos os itens dessa coleção especial.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- LIFESTYLE -->
+      <div class="card" data-cat="lifestyle"><span class="card-tag tag-blue">Lifestyle</span><p class="card-text">A rotina de estudo mais fofa do seu feed 📚🌸 Conta pra gente: você é mais do tipo agenda física ou digital? A gente tem paixão pelas duas 😄</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lifestyle"><span class="card-tag tag-blue">Lifestyle</span><p class="card-text">Domingo é dia de organizar a semana e a gente tá aqui pra te ajudar nisso 🌿✨ Qual o seu ritual de planejamento? Conta nos comentários!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lifestyle"><span class="card-tag tag-blue">Lifestyle</span><p class="card-text">Para as amantes de papelaria: esse sentimento de abrir um caderno novo não tem preço 🥹📓 Você também sente isso? Marca quem entende essa emoção!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lifestyle"><span class="card-tag tag-blue">Lifestyle</span><p class="card-text">Rating de humor: nível da coleção de canetas 🖊️🌈 Quanto mais colorida, mais feliz a gente fica. E você, coleciona canetas também ou sou só eu? 😄</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lifestyle"><span class="card-tag tag-blue">Lifestyle</span><p class="card-text">A mesa de estudos diz muito sobre quem você é 📚✨ Compartilha uma foto do seu setup nos comentários! A gente ama ver os cantinhos fofos das seguidoras 🩷</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="lifestyle"><span class="card-tag tag-blue">Lifestyle</span><p class="card-text">Essa semana começa do jeito certo: com tudo planejado, agenda em dia e muito fofinho no caminho 📅🌷 Você já planejou a sua semana? Conta pra gente!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="promocao">
-        <span class="card-tag tag-amber">Promoção</span>
-        <p class="card-text">Só hoje! Aproveita nossos preços especiais em itens selecionados 🎉 Usa o cupom FOFA10 e economiza 10% no pedido. Corre, é por tempo limitado!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- DATAS -->
+      <div class="card" data-cat="data"><span class="card-tag tag-pink">Datas</span><p class="card-text">Dia das Mães chegando! 💐🩷 Que tal presentear com algo personalizado e cheio de carinho? Temos opções perfeitas para tornar esse dia ainda mais especial.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="data"><span class="card-tag tag-pink">Datas</span><p class="card-text">Volta às aulas chegando! 🎒📚 Prepara sua mochila com o que há de mais fofo e funcional. A gente separou os melhores itens pra você começar o ano com tudo 🌟</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="data"><span class="card-tag tag-pink">Datas</span><p class="card-text">Dia dos Professores 🍎✨ Para quem transforma vidas todos os dias, nada melhor do que um presente útil e cheio de carinho. Veja nossas sugestões especiais!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="data"><span class="card-tag tag-pink">Datas</span><p class="card-text">Natal chegando! 🎄✨ Já separamos as melhores opções de presente pra quem ama papelaria. Vai ser difícil escolher só um item, aviso já 😄</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="data"><span class="card-tag tag-pink">Datas</span><p class="card-text">Dia dos Namorados 💕 Que tal sair do óbvio e presentear com uma experiência de organização linda e personalizada? Nossos kits são perfeitos pra quem ama papelaria!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="promocao">
-        <span class="card-tag tag-amber">Promoção</span>
-        <p class="card-text">Frete grátis hoje! 🚚✨ Qualquer compra acima de R$79 já vai sem custo pra você. Aproveita pra completar o estoquinho em casa 🩷</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- ENGAJAMENTO -->
+      <div class="card" data-cat="engajamento"><span class="card-tag tag-green">Engajamento</span><p class="card-text">Pergunta do dia: qual item de papelaria você jamais consegue ter um só? 🤔 Aqui na redação é caneta gel — sempre comprando mais uma "só pra ver a cor" 😂 Conta o seu!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="engajamento"><span class="card-tag tag-green">Engajamento</span><p class="card-text">Verdade ou mito: caderno organizado = vida organizada? 🤭 Aqui a gente acredita muito que sim! O que você acha? Comenta abaixo ⬇️</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="engajamento"><span class="card-tag tag-green">Engajamento</span><p class="card-text">Se você tivesse que escolher APENAS um item pra levar pra uma ilha deserta, qual seria? 🏝️✏️ Responde nos comentários — vai ser difícil não discutir isso! 😄</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="engajamento"><span class="card-tag tag-green">Engajamento</span><p class="card-text">Salva esse post se você também tem uma gaveta inteira de papelaria que "um dia vai usar" 🙋‍♀️🗄️ Sem julgamentos aqui, somos todas iguais! 😂💕</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="engajamento"><span class="card-tag tag-green">Engajamento</span><p class="card-text">Vou revelar um segredo: a gente tá desenvolvendo algo novo 👀🎀 Deixa um 🩷 nos comentários se quiser receber em primeira mão quando chegar!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="promocao">
-        <span class="card-tag tag-amber">Promoção</span>
-        <p class="card-text">Liquidação de fim de temporada! 🌟 Itens com até 40% de desconto. São peças únicas, quando acabar acabou. Link na bio pra ver tudo 🛍️</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- BASTIDORES -->
+      <div class="card" data-cat="bastidores"><span class="card-tag tag-purple">Bastidores</span><p class="card-text">Chega de mistério! 🎀 Deixa a gente te mostrar o que acontece por trás da nossa loja. Cada produto é selecionado com muito cuidado antes de chegar até você. Desliza pra ver o processo!</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="bastidores"><span class="card-tag tag-purple">Bastidores</span><p class="card-text">Hoje foi dia de embalar os pedidos! 📦🩷 Cada pacotinho sai daqui com papel de seda, bilhetinho e muito carinho. Porque a gente sabe que a experiência de receber é tão importante quanto o produto.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="bastidores"><span class="card-tag tag-purple">Bastidores</span><p class="card-text">Vocês pedem, a gente pesquisa 🔍✨ Antes de qualquer novidade entrar no site, testamos, fotografamos e garantimos que é digno de vocês. Esse processo é nossa forma de cuidar! 🌸</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
-      <div class="card" data-cat="promocao">
-        <span class="card-tag tag-amber">Promoção</span>
-        <p class="card-text">Kit especial com desconto progressivo! 💛 2 itens = 10% off / 3 itens = 15% off / 4+ itens = 20% off. Monta o kit dos sonhos e economiza bastante 🛍️</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="motivacional">
-        <span class="card-tag tag-purple">Motivacional</span>
-        <p class="card-text">Seu cantinho de trabalho muda como você se sente durante o dia inteiro ✨ Pequenos detalhes fofos fazem uma diferença enorme na sua energia e criatividade 🌸</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="motivacional">
-        <span class="card-tag tag-purple">Motivacional</span>
-        <p class="card-text">Organizar é um ato de amor próprio 🩷 Quando seu espaço está bonito e arrumado, tudo fica mais leve. Cuida do seu ambiente e ele cuida de você 🌷</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="motivacional">
-        <span class="card-tag tag-purple">Motivacional</span>
-        <p class="card-text">Não subestime o poder de uma agenda bem decorada, um caderno novo e uma caneta que escreve bem 🖊️ É o começo de grandes ideias 💫</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="motivacional">
-        <span class="card-tag tag-purple">Motivacional</span>
-        <p class="card-text">Você não precisa de mais disciplina. Você precisa de um ambiente que te inspire ✨ A papelaria certa transforma como você estuda, trabalha e cria 💜</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="motivacional">
-        <span class="card-tag tag-purple">Motivacional</span>
-        <p class="card-text">Cada item de papelaria que você compra é um investimento em si mesma 💜 Na sua organização, na sua criatividade, no seu bem-estar. Você merece o melhor.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="produto">
-        <span class="card-tag tag-teal">Produto</span>
-        <p class="card-text">Esse caderno é perfeito pra quem ama escrever à mão mas também quer tudo organizado 📓🌸 Páginas pontilhadas, capa firme e aquele cheirinho de papel novo que a gente ama.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="produto">
-        <span class="card-tag tag-teal">Produto</span>
-        <p class="card-text">Adesivos fofinhos que transformam qualquer coisa 🎀 Planner, caderno, garrafa, capinha — cola em tudo e fica uma gracinha. Desliza pra ver as opções!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="produto">
-        <span class="card-tag tag-teal">Produto</span>
-        <p class="card-text">Essa caneta gel é nosso item mais querido 🖊️✨ Escrita suave, tinta que não borra e ainda fica linda na sua mesa. Vem em 12 cores incríveis!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="produto">
-        <span class="card-tag tag-teal">Produto</span>
-        <p class="card-text">Kit presente perfeito para quem ama papelaria 🎁🌷 Vem com caderno, caneta e kit de adesivos — tudo embalado com muito carinho. Disponível para encomenda!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="produto">
-        <span class="card-tag tag-teal">Produto</span>
-        <p class="card-text">Planner semanal que cabe na bolsa 👜📅 Compacto, bonito e super funcional. Tem espaço pra metas, tarefas e até um cantinho pra doodles 🌸</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="produto">
-        <span class="card-tag tag-teal">Produto</span>
-        <p class="card-text">Fita washi nova coleção! 🎀 Padrões exclusivos que a gente não acha em lugar nenhum. Perfeita pra decorar, marcar páginas e personalizar tudo que você quiser.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="lifestyle">
-        <span class="card-tag tag-blue">Lifestyle</span>
-        <p class="card-text">A rotina de estudo mais fofa do seu feed 📚🌸 Conta pra gente: você é mais do tipo agenda física ou digital? A gente tem paixão pelas duas 😄</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="lifestyle">
-        <span class="card-tag tag-blue">Lifestyle</span>
-        <p class="card-text">Domingo é dia de organizar a semana e a gente tá aqui pra te ajudar nisso 🌿✨ Qual o seu ritual de planejamento? Conta nos comentários!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="lifestyle">
-        <span class="card-tag tag-blue">Lifestyle</span>
-        <p class="card-text">Para as amantes de papelaria: esse sentimento de abrir um caderno novo não tem preço 🥹📓 Você também sente isso? Marca quem entende essa emoção!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="lifestyle">
-        <span class="card-tag tag-blue">Lifestyle</span>
-        <p class="card-text">Rating de humor: nível da coleção de canetas 🖊️🌈 Quanto mais colorida, mais feliz a gente fica. E você, coleciona canetas também ou sou só eu? 😄</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="lifestyle">
-        <span class="card-tag tag-blue">Lifestyle</span>
-        <p class="card-text">A mesa de estudos diz muito sobre quem você é 📚✨ Compartilha uma foto do seu setup nos comentários! A gente ama ver os cantinhos fofos das seguidoras 🩷</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="lifestyle">
-        <span class="card-tag tag-blue">Lifestyle</span>
-        <p class="card-text">Essa semana começa do jeito certo: com tudo planejado, agenda em dia e muito fofinho no caminho 📅🌷 Você já planejou a sua semana? Conta pra gente!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="data">
-        <span class="card-tag tag-pink">Datas comemorativas</span>
-        <p class="card-text">Dia das Mães chegando! 💐🩷 Que tal presentear com algo personalizado e cheio de carinho? Temos opções perfeitas para tornar esse dia ainda mais especial.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="data">
-        <span class="card-tag tag-pink">Datas comemorativas</span>
-        <p class="card-text">Volta às aulas chegando! 🎒📚 Prepara sua mochila com o que há de mais fofo e funcional. A gente separou os melhores itens pra você começar o ano com tudo 🌟</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="data">
-        <span class="card-tag tag-pink">Datas comemorativas</span>
-        <p class="card-text">Dia dos Professores 🍎✨ Para quem transforma vidas todos os dias, nada melhor do que um presente útil e cheio de carinho. Veja nossas sugestões especiais!</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card" data-cat="data">
-        <span class="card-tag tag-pink">Datas comemorativas</span>
-        <p class="card-text">Natal chegando! 🎄✨ Já separamos as melhores opções de presente pra quem ama papelaria. Vai ser difícil escolher só um item, aviso já 😄</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <!-- RESTOCK -->
+      <div class="card" data-cat="restock"><span class="card-tag tag-teal">Restock</span><p class="card-text">VOLTOU! 🎉 Um dos nossos itens mais pedidos acabou de ser reposto. Se você estava na lista de espera, esse é o momento! Link na bio antes que esgote de novo 🏃‍♀️💨</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="restock"><span class="card-tag tag-teal">Restock</span><p class="card-text">Ele voltou e dessa vez tem mais estoque! 🌸📦 Tantas pessoas pediram que a gente correu pra repor. Aproveita porque a última vez esgotou em menos de 24h 👀</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card" data-cat="restock"><span class="card-tag tag-teal">Restock</span><p class="card-text">Ouvi vocês! 🥹✨ Nosso item mais amado voltou pro estoque após muita solicitação. Pra quem ficou de mão vazia da última vez: agora é a hora! Link na bio 💕</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
     </div>
   </div>
@@ -661,129 +365,50 @@
   <!-- ===== PROMPTS ===== -->
   <div id="prompts" class="section">
     <div class="section-header">
-      <div class="section-title">Prompts de imagem <span class="count-badge">20</span></div>
+      <div class="section-title">Prompts de imagem <span class="count-badge">40</span></div>
     </div>
     <div class="cards-grid">
 
-      <div class="card">
-        <span class="card-tag tag-pink">Flatlay PT</span>
-        <p class="card-text">Flatlay aesthetic de papelaria fofa sobre fundo branco: caderno pontilhado, fita washi floral, canetas coloridas, flores secas e adesivos kawaii. Paleta rosa e lilás. Luz natural suave. Alta resolução.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-pink">Flatlay EN</span>
-        <p class="card-text">Overhead shot of cute stationery set: pastel notebooks, gel pens, washi tape, dried flowers and small clips arranged aesthetically on a beige linen background. Soft natural light, cozy atmosphere.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-teal">Produto PT</span>
-        <p class="card-text">Close-up foto de caderno espiral com capa floral em tons de rosa e verde menta sobre mesa de madeira clara. Fundo desfocado com flores reais. Estilo editorial, 50mm lens look.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-teal">Produto EN</span>
-        <p class="card-text">Product photography of kawaii planner with cute illustrations: cherry blossoms, rabbits and pastel patterns. White marble background, soft shadows, minimalist layout. Instagram aesthetic.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-purple">Lifestyle PT</span>
-        <p class="card-text">Mesa de estudos estética com notebook, caderno aberto, canecinha de café, planta suculenta e papelaria fofa espalhada. Luz quente de tarde, janela ao fundo. Estilo coreano aesthetic.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-purple">Lifestyle EN</span>
-        <p class="card-text">Cozy study corner aesthetic: open journal with handwriting, set of colorful pens, cup of matcha latte, small succulent plant. Warm golden hour light, bokeh background. Hygge vibes.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-amber">Seasonal PT</span>
-        <p class="card-text">Flatlay de papelaria de inverno: caderno xadrez, vela aromática, caneca quentinha, adesivos de floco de neve e fita washi azul e branca. Fundo de madeira rústica. Atmosfera aconchegante.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-amber">Seasonal EN</span>
-        <p class="card-text">Spring stationery flatlay: pastel pink and mint notebooks, cherry blossom washi tape, flower-shaped sticky notes, butterflies and petals scattered. White background, fresh and airy mood.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-pink">Kit Presente PT</span>
-        <p class="card-text">Kit presente de papelaria embalado com papel kraft, laço de cetim rosa, caderno floral e canetas coloridas visíveis. Ao lado, cartão handwritten. Fundo neutro, fotografia estilo editorial.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-pink">Kit Presente EN</span>
-        <p class="card-text">Cute gift set for stationery lovers: wrapped in translucent paper with ribbon bow, showing notebooks, pens and stickers inside. Pink and white color palette, top-down view, minimal background.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-teal">Detalhes PT</span>
-        <p class="card-text">Macro foto de mãos escrevendo em caderno pontilhado com caneta dourada. Anéis delicados nas mãos, flores ao fundo desfocadas. Tons de bege e dourado. Estilo fashion editorial.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-teal">Detalhes EN</span>
-        <p class="card-text">Close up of washi tape collection displayed on wooden board: dozens of rolls in floral, geometric and pastel patterns. Organized by color. Bright and cheerful photography. White background.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-purple">Moodboard PT</span>
-        <p class="card-text">Moodboard aesthetic de papelaria: collage com fotos de cadernos abertos, bullet journals, flores, cafés e citações motivacionais escritas à mão. Paleta pastel harmoniosa. Pinterest style.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-purple">Bullet Journal EN</span>
-        <p class="card-text">Bullet journal spread inspiration: weekly layout with hand-drawn flowers, color-coded tasks and habit tracker. Fine liner pens visible on the side. Aesthetic overhead photo, natural light.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-blue">Packaging PT</span>
-        <p class="card-text">Unboxing flat lay de pedido de papelaria: caixa aberta revelando papel de seda rosa, cartão de agradecimento handwritten, adesivos brinde e produtos cuidadosamente embalados. Fotografia de conteúdo.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-blue">Packaging EN</span>
-        <p class="card-text">Aesthetic packaging unboxing: open box with pink tissue paper, handwritten thank you card, freebie stickers and bubble-wrapped items. Top view, white background, small details visible.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-pink">Kawaii PT</span>
-        <p class="card-text">Estilo kawaii: personagens fofinhos de borracha e acessórios de papelaria com expressões felizes — estrelinhas, corações e flores decorando a cena. Cores vibrantes pastel. Fundo simples e limpo.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-pink">Kawaii EN</span>
-        <p class="card-text">Japanese kawaii stationery set: animal-shaped erasers, cat pen holder, bunny sticky notes and pastel highlighters arranged on a white desk. Cute and playful photography with soft shadows.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-teal">Ambiente PT</span>
-        <p class="card-text">Quarto de adolescente estética: mesa com cadernos empilhados, polaroids na parede, plantas, luzes de corda e papelaria fofa espalhada. Cores terrosas e rosa. Fotografia lifestyle de quarto.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
-
-      <div class="card">
-        <span class="card-tag tag-teal">Ambiente EN</span>
-        <p class="card-text">Cozy home office setup with cute stationery: pastel desk accessories, open planner, aesthetic pen cup, small plant, polaroid photos pinned on wall. Warm neutral tones. Lifestyle photography.</p>
-        <button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button>
-      </div>
+      <div class="card"><span class="card-tag tag-pink">Flatlay PT</span><p class="card-text">Flatlay aesthetic de papelaria fofa sobre fundo branco: caderno pontilhado, fita washi floral, canetas coloridas, flores secas e adesivos kawaii. Paleta rosa e lilás. Luz natural suave. Alta resolução.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Flatlay EN</span><p class="card-text">Overhead shot of cute stationery set: pastel notebooks, gel pens, washi tape, dried flowers and small clips arranged aesthetically on a beige linen background. Soft natural light, cozy atmosphere.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Produto PT</span><p class="card-text">Close-up foto de caderno espiral com capa floral em tons de rosa e verde menta sobre mesa de madeira clara. Fundo desfocado com flores reais. Estilo editorial, 50mm lens look.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Produto EN</span><p class="card-text">Product photography of kawaii planner with cute illustrations: cherry blossoms, rabbits and pastel patterns. White marble background, soft shadows, minimalist layout. Instagram aesthetic.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Lifestyle PT</span><p class="card-text">Mesa de estudos estética com notebook, caderno aberto, canecinha de café, planta suculenta e papelaria fofa espalhada. Luz quente de tarde, janela ao fundo. Estilo coreano aesthetic.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Lifestyle EN</span><p class="card-text">Cozy study corner aesthetic: open journal with handwriting, set of colorful pens, cup of matcha latte, small succulent plant. Warm golden hour light, bokeh background. Hygge vibes.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Seasonal PT</span><p class="card-text">Flatlay de papelaria de inverno: caderno xadrez, vela aromática, caneca quentinha, adesivos de floco de neve e fita washi azul e branca. Fundo de madeira rústica. Atmosfera aconchegante.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Seasonal EN</span><p class="card-text">Spring stationery flatlay: pastel pink and mint notebooks, cherry blossom washi tape, flower-shaped sticky notes, butterflies and petals scattered. White background, fresh and airy mood.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Kit Presente PT</span><p class="card-text">Kit presente de papelaria embalado com papel kraft, laço de cetim rosa, caderno floral e canetas coloridas visíveis. Ao lado, cartão handwritten. Fundo neutro, fotografia estilo editorial.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Kit Presente EN</span><p class="card-text">Cute gift set for stationery lovers: wrapped in translucent paper with ribbon bow, showing notebooks, pens and stickers inside. Pink and white color palette, top-down view, minimal background.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Detalhes PT</span><p class="card-text">Macro foto de mãos escrevendo em caderno pontilhado com caneta dourada. Anéis delicados nas mãos, flores ao fundo desfocadas. Tons de bege e dourado. Estilo fashion editorial.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Detalhes EN</span><p class="card-text">Close up of washi tape collection displayed on wooden board: dozens of rolls in floral, geometric and pastel patterns. Organized by color. Bright and cheerful photography. White background.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Moodboard PT</span><p class="card-text">Moodboard aesthetic de papelaria: collage com fotos de cadernos abertos, bullet journals, flores, cafés e citações motivacionais escritas à mão. Paleta pastel harmoniosa. Pinterest style.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Bullet Journal EN</span><p class="card-text">Bullet journal spread inspiration: weekly layout with hand-drawn flowers, color-coded tasks and habit tracker. Fine liner pens visible on the side. Aesthetic overhead photo, natural light.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Packaging PT</span><p class="card-text">Unboxing flat lay de pedido de papelaria: caixa aberta revelando papel de seda rosa, cartão de agradecimento handwritten, adesivos brinde e produtos cuidadosamente embalados.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Packaging EN</span><p class="card-text">Aesthetic packaging unboxing: open box with pink tissue paper, handwritten thank you card, freebie stickers and bubble-wrapped items. Top view, white background, small details visible.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Kawaii PT</span><p class="card-text">Estilo kawaii: personagens fofinhos de borracha e acessórios de papelaria com expressões felizes — estrelinhas, corações e flores decorando a cena. Cores vibrantes pastel. Fundo simples e limpo.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Kawaii EN</span><p class="card-text">Japanese kawaii stationery set: animal-shaped erasers, cat pen holder, bunny sticky notes and pastel highlighters arranged on a white desk. Cute and playful photography with soft shadows.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Ambiente PT</span><p class="card-text">Quarto de adolescente estética: mesa com cadernos empilhados, polaroids na parede, plantas, luzes de corda e papelaria fofa espalhada. Cores terrosas e rosa. Fotografia lifestyle de quarto.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Ambiente EN</span><p class="card-text">Cozy home office setup with cute stationery: pastel desk accessories, open planner, aesthetic pen cup, small plant, polaroid photos pinned on wall. Warm neutral tones. Lifestyle photography.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Outono PT</span><p class="card-text">Flatlay temático de outono com papelaria: folhas secas laranjas e vermelhas, caderno de couro, canetas em tons terrosos, vela de baunilha e xícara de chá. Fundo de madeira rústica aquecida.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Outono EN</span><p class="card-text">Autumn stationery flatlay: brown leather journal, dried maple leaves, ink pens, cinnamon stick and small pumpkins arranged on dark wood. Warm moody tones, fall aesthetic editorial.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Planner Aberto PT</span><p class="card-text">Planner semanal aberto com decorações de bullet journal: washi nas bordas, adesivos coloridos, lettering cursivo nos títulos e marcadores de hábito preenchidos. Vista superior, luz natural lateral.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Planner Aberto EN</span><p class="card-text">Open weekly planner with colorful sticker decorations, hand lettered headers, washi tape borders and doodles. Gel pens nearby. Flat lay on white marble, soft morning light. Pinterest aesthetic.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-green">Papelaria Minimalista PT</span><p class="card-text">Setup minimalista de papelaria em preto e branco: caderno liso sem pauta, caneta preta fina, porta-lápis cerâmico, pequena planta e nota adesiva amarela. Fundo linho bege. Composição limpa.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-green">Papelaria Minimalista EN</span><p class="card-text">Minimalist stationery flat lay: black and white notebooks, single fine-liner pen, ceramic mug, clean composition on white linen. Neutral tones, editorial style, lots of negative space.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Cores Pastéis PT</span><p class="card-text">Paleta de papelaria 100% pastel: cadernos rosa bebê, lilás, menta e pêssego empilhados, canetas nas mesmas cores e adesivos de nuvem e estrela. Fundo branco puro. Ultra clean e fofo.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Cores Pastéis EN</span><p class="card-text">Full pastel stationery palette: baby pink, lavender, mint and peach notebooks stacked, matching pens and cloud stickers. Pure white background, ultra clean aesthetic, dreamy lighting.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Noite de Planejamento PT</span><p class="card-text">Cena noturna aconchegante de planejamento: mão escrevendo em caderno com luz de abajur quente, vela acesa, xícara de chá e adesivos espalhados. Fundo escuro com detalhes dourados.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Noite de Planejamento EN</span><p class="card-text">Cozy night planning scene: hand writing in journal under warm lamp light, lit candle, herbal tea cup and sticky notes. Dark moody background, golden accents, hygge atmosphere.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Canetas Rainbow PT</span><p class="card-text">Flat lay de canetas coloridas organizadas em arco-íris: do vermelho ao violeta, cada cor em ordem perfeita sobre fundo branco. Elegante e satisfatório. Fotografia produto limpa e nítida.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Canetas Rainbow EN</span><p class="card-text">Rainbow pen collection arranged in spectrum order: red to violet, each pen perfectly aligned on white surface. Clean product photography, overhead shot, sharp focus, satisfying visual.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Estúdio PT</span><p class="card-text">Behind-the-scenes de loja de papelaria fofa: mesa de embalagem com papel de seda, fitas, selos de cera e caixinhas organizadas. Luz de estúdio suave. Conteúdo autêntico e profissional.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Estúdio EN</span><p class="card-text">Cute stationery store packing station: tissue paper, ribbons, wax seals and small gift boxes neatly organized on white table. Soft studio lighting, authentic behind-the-scenes aesthetic.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Agenda Decorada PT</span><p class="card-text">Agenda decorada aberta em dupla de planejamento mensal: grade do mês ilustrada com flores desenhadas à mão, fitas washi nas bordas e marcadores de eventos em adesivos florais.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Agenda Decorada EN</span><p class="card-text">Decorated monthly planner spread: hand-drawn flower calendar grid, washi tape borders, floral event stickers and color-coded entries. Overhead shot, natural light, art journal vibes.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-green">Papelaria + Café PT</span><p class="card-text">Flatlay aesthetic com caderno aberto e café com leite em xícara de porcelana floral. Pétalas secas, caneta de ouro e post-its laranjas. Mesa de madeira clara. Manhã produtiva vibe.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-green">Papelaria + Café EN</span><p class="card-text">Open notebook with latte art in floral porcelain cup, dried rose petals, gold pen and orange sticky notes. Light wood surface. Morning productivity aesthetic, warm tones, soft focus.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Coleção Exclusiva PT</span><p class="card-text">Coleção exclusiva de papelaria posicionada como lookbook: cadernos e acessórios dispostos artisticamente sobre veludo branco, com pequenos cristais e flores. Iluminação de produto premium.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Coleção Exclusiva EN</span><p class="card-text">Exclusive stationery collection styled as a lookbook: notebooks and accessories on white velvet with crystals and flowers. Premium product lighting, editorial composition, luxury feel.</p><button class="copy-btn" onclick="copyCard(this)">📋 Copiar</button></div>
 
     </div>
   </div>
@@ -791,199 +416,306 @@
   <!-- ===== CARROSSÉIS ===== -->
   <div id="carrossel" class="section">
     <div class="section-header">
-      <div class="section-title">Roteiros de carrossel <span class="count-badge">12</span></div>
+      <div class="section-title">Roteiros de carrossel <span class="count-badge">24</span></div>
     </div>
     <div class="carousel-grid">
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-pink" style="align-self:flex-start">Organização</span>
-          5 formas de usar seu planner de verdade
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Organização</span>5 formas de usar seu planner de verdade</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Você tem um planner lindo mas não usa? Esse carrossel é pra você 🩷"</li>
+          <li><span class="slide-num">C</span>"Você tem um planner lindo mas não usa? Esse carrossel é pra você 🩷"</li>
           <li><span class="slide-num">2</span>Defina 3 prioridades do dia, não uma lista infinita</li>
-          <li><span class="slide-num">3</span>Use cores diferentes pra cada área da vida (trabalho, pessoal, saúde)</li>
+          <li><span class="slide-num">3</span>Use cores diferentes pra cada área da vida</li>
           <li><span class="slide-num">4</span>Reserve 10min toda manhã só pra planejar</li>
           <li><span class="slide-num">5</span>Revise o que não fez — sem culpa, só reagendando</li>
-          <li><span class="slide-num">F</span>CTA: "Salva pra não esquecer + conta seu método nos comentários!"</li>
+          <li><span class="slide-num">F</span>"Salva pra não esquecer + conta seu método!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, '5 FORMAS DE USAR SEU PLANNER DE VERDADE\n\nCapa: Você tem um planner lindo mas não usa? Esse carrossel é pra você 🩷\n\nSlide 2: Defina 3 prioridades do dia, não uma lista infinita\n\nSlide 3: Use cores diferentes pra cada área da vida (trabalho, pessoal, saúde)\n\nSlide 4: Reserve 10min toda manhã só pra planejar\n\nSlide 5: Revise o que não fez — sem culpa, só reagendando\n\nSlide final: Salva pra não esquecer + conta seu método nos comentários!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'5 FORMAS DE USAR SEU PLANNER\n\nCapa: Você tem um planner lindo mas não usa? Esse carrossel é pra você 🩷\n\nSlide 2: Defina 3 prioridades do dia, não uma lista infinita\nSlide 3: Use cores diferentes pra cada área da vida\nSlide 4: Reserve 10min toda manhã só pra planejar\nSlide 5: Revise o que não fez — sem culpa, só reagendando\n\nFinal: Salva pra não esquecer + conta seu método!')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-teal" style="align-self:flex-start">Produto</span>
-          Tudo que você precisa saber sobre fita washi
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Produto</span>Tudo que você precisa saber sobre fita washi</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Fita washi: o item mais versátil da papelaria (e você provavelmente subestima)"</li>
+          <li><span class="slide-num">C</span>"Fita washi: o item mais versátil da papelaria (e você subestima)"</li>
           <li><span class="slide-num">2</span>O que é e de onde veio — origem japonesa</li>
-          <li><span class="slide-num">3</span>7 formas de usar: caderno, embrulho, moldura de fotos, marcador...</li>
+          <li><span class="slide-num">3</span>7 formas de usar: caderno, embrulho, moldura, marcador...</li>
           <li><span class="slide-num">4</span>Como escolher a largura certa pra cada uso</li>
           <li><span class="slide-num">5</span>Dica bônus: como armazenar sua coleção de forma fofa</li>
-          <li><span class="slide-num">F</span>CTA: "Qual é a sua fita preferida? Marca uma amiga apaixonada por washi!"</li>
+          <li><span class="slide-num">F</span>"Qual é a sua fita favorita? Marca uma amiga!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'TUDO QUE VOCÊ PRECISA SABER SOBRE FITA WASHI\n\nCapa: Fita washi: o item mais versátil da papelaria (e você provavelmente subestima)\n\nSlide 2: O que é e de onde veio — origem japonesa\n\nSlide 3: 7 formas de usar: caderno, embrulho, moldura de fotos, marcador...\n\nSlide 4: Como escolher a largura certa pra cada uso\n\nSlide 5: Dica bônus: como armazenar sua coleção de forma fofa\n\nSlide final: Qual é a sua fita preferida? Marca uma amiga apaixonada por washi!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'TUDO SOBRE FITA WASHI\n\nCapa: Fita washi: o item mais versátil da papelaria\n\nSlide 2: O que é e de onde veio — origem japonesa\nSlide 3: 7 formas de usar: caderno, embrulho, moldura, marcador\nSlide 4: Como escolher a largura certa\nSlide 5: Como armazenar sua coleção de forma fofa\n\nFinal: Qual é a sua fita favorita? Marca uma amiga!')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-purple" style="align-self:flex-start">Lifestyle</span>
-          Monta o setup de estudos dos sonhos
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Lifestyle</span>Monta o setup de estudos dos sonhos</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "O setup que vai te fazer querer estudar todo dia 📚✨"</li>
+          <li><span class="slide-num">C</span>"O setup que vai te fazer querer estudar todo dia 📚✨"</li>
           <li><span class="slide-num">2</span>Iluminação — a base de tudo (luz natural + abajur)</li>
           <li><span class="slide-num">3</span>O essencial: caderno, caneta boa, marca-texto e planner</li>
           <li><span class="slide-num">4</span>Os extras fofos: plantas, porta-canetas, adesivos e washi</li>
           <li><span class="slide-num">5</span>O segredo: só coloque o que você realmente usa na mesa</li>
-          <li><span class="slide-num">F</span>CTA: "Manda foto do seu setup nos comentários 🩷"</li>
+          <li><span class="slide-num">F</span>"Manda foto do seu setup nos comentários 🩷"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'MONTA O SETUP DE ESTUDOS DOS SONHOS\n\nCapa: O setup que vai te fazer querer estudar todo dia\n\nSlide 2: Iluminação — a base de tudo (luz natural + abajur)\n\nSlide 3: O essencial: caderno, caneta boa, marca-texto e planner\n\nSlide 4: Os extras fofos: plantas, porta-canetas, adesivos e washi\n\nSlide 5: O segredo: só coloque o que você realmente usa na mesa\n\nSlide final: Manda foto do seu setup nos comentários!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'SETUP DE ESTUDOS DOS SONHOS\n\nCapa: O setup que vai te fazer querer estudar todo dia!\n\nSlide 2: Iluminação — a base de tudo\nSlide 3: O essencial: caderno, caneta boa, marca-texto e planner\nSlide 4: Os extras fofos: plantas, porta-canetas, adesivos e washi\nSlide 5: O segredo: só coloque o que você realmente usa na mesa\n\nFinal: Manda foto do seu setup nos comentários!')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-amber" style="align-self:flex-start">Vendas</span>
-          Papelaria barata vs. qualidade — a diferença real
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">Vendas</span>Papelaria barata vs. qualidade — a diferença real</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Papelaria barata vs. papelaria de qualidade — a diferença que ninguém te contou"</li>
+          <li><span class="slide-num">C</span>"A diferença que ninguém te contou"</li>
           <li><span class="slide-num">2</span>Caneta que risca uniforme vs. que falha sempre</li>
           <li><span class="slide-num">3</span>Caderno que não mancha vs. papel fino que borra</li>
           <li><span class="slide-num">4</span>Planner bonito que você usa vs. um que fica na gaveta</li>
           <li><span class="slide-num">5</span>Investir em papelaria boa = investir na sua produtividade</li>
-          <li><span class="slide-num">F</span>CTA: "Temos itens de qualidade pra todo bolso — link na bio"</li>
+          <li><span class="slide-num">F</span>"Temos itens de qualidade pra todo bolso — link na bio"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'PAPELARIA BARATA VS. QUALIDADE\n\nCapa: A diferença que ninguém te contou\n\nSlide 2: Caneta que risca uniforme vs. que falha sempre\n\nSlide 3: Caderno que não mancha vs. papel fino que borra\n\nSlide 4: Planner bonito que você usa vs. um que fica na gaveta\n\nSlide 5: Investir em papelaria boa = investir na sua produtividade\n\nSlide final: Temos itens de qualidade pra todo bolso — link na bio')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'PAPELARIA BARATA VS QUALIDADE\n\nCapa: A diferença que ninguém te contou\n\nSlide 2: Caneta que risca uniforme vs. que falha sempre\nSlide 3: Caderno que não mancha vs. papel fino que borra\nSlide 4: Planner bonito que você usa vs. um que fica na gaveta\nSlide 5: Investir em papelaria boa = investir na sua produtividade\n\nFinal: Temos itens de qualidade pra todo bolso — link na bio')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-pink" style="align-self:flex-start">Engajamento</span>
-          Qual é o seu tipo de personalidade de papelaria?
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Engajamento</span>Qual é o seu tipo de personalidade de papelaria?</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Qual é o seu tipo? Arrasta pra descobrir 🎀"</li>
+          <li><span class="slide-num">C</span>"Qual é o seu tipo? Arrasta pra descobrir 🎀"</li>
           <li><span class="slide-num">2</span>A Minimalista — caneta preta, caderno neutro, zero frescura</li>
-          <li><span class="slide-num">3</span>A Colorida — quanto mais cor, melhor. Marca-texto em tudo</li>
+          <li><span class="slide-num">3</span>A Colorida — quanto mais cor, melhor</li>
           <li><span class="slide-num">4</span>A Colecionadora — compra mas não usa. O prazer é ter</li>
-          <li><span class="slide-num">5</span>A Organizada — sistema perfeito, etiquetas em tudo, planner decorado</li>
-          <li><span class="slide-num">F</span>CTA: "Comenta seu tipo! (pode ser uma mistura 😄)"</li>
+          <li><span class="slide-num">5</span>A Organizada — sistema perfeito, etiquetas em tudo</li>
+          <li><span class="slide-num">F</span>"Comenta seu tipo! (pode ser uma mistura 😄)"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'QUAL É O SEU TIPO DE PERSONALIDADE DE PAPELARIA?\n\nCapa: Qual é o seu tipo? Arrasta pra descobrir!\n\nSlide 2: A Minimalista — caneta preta, caderno neutro, zero frescura\n\nSlide 3: A Colorida — quanto mais cor, melhor. Marca-texto em tudo\n\nSlide 4: A Colecionadora — compra mas não usa. O prazer é ter\n\nSlide 5: A Organizada — sistema perfeito, etiquetas em tudo, planner decorado\n\nSlide final: Comenta seu tipo! (pode ser uma mistura)')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'PERSONALIDADE DE PAPELARIA\n\nCapa: Qual é o seu tipo? Arrasta pra descobrir!\n\nSlide 2: A Minimalista — caneta preta, caderno neutro\nSlide 3: A Colorida — quanto mais cor, melhor\nSlide 4: A Colecionadora — compra mas não usa\nSlide 5: A Organizada — sistema perfeito, etiquetas em tudo\n\nFinal: Comenta seu tipo! (pode ser uma mistura)')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-teal" style="align-self:flex-start">Educativo</span>
-          Como decorar seu caderno do zero
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Educativo</span>Como decorar seu caderno do zero</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Caderno zero a cem em 5 passos — sem precisar saber desenhar"</li>
+          <li><span class="slide-num">C</span>"Caderno zero a cem em 5 passos — sem precisar desenhar"</li>
           <li><span class="slide-num">2</span>Escolha uma paleta de 3 cores só</li>
           <li><span class="slide-num">3</span>Use fita washi nas bordas para criar molduras</li>
           <li><span class="slide-num">4</span>Cole adesivos temáticos nas páginas de introdução</li>
           <li><span class="slide-num">5</span>Títulos com letra bold — simples mas impactante</li>
-          <li><span class="slide-num">F</span>CTA: "Salva esse carrossel + manda o resultado pra gente ver!"</li>
+          <li><span class="slide-num">F</span>"Salva + manda o resultado pra gente ver!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'COMO DECORAR SEU CADERNO DO ZERO\n\nCapa: Caderno zero a cem em 5 passos — sem precisar saber desenhar\n\nSlide 2: Escolha uma paleta de 3 cores só\n\nSlide 3: Use fita washi nas bordas para criar molduras\n\nSlide 4: Cole adesivos temáticos nas páginas de introdução\n\nSlide 5: Títulos com letra bold — simples mas impactante\n\nSlide final: Salva esse carrossel + manda o resultado pra gente ver!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'COMO DECORAR SEU CADERNO DO ZERO\n\nCapa: Caderno zero a cem em 5 passos — sem precisar saber desenhar\n\nSlide 2: Escolha uma paleta de 3 cores só\nSlide 3: Use fita washi nas bordas\nSlide 4: Cole adesivos temáticos nas páginas de introdução\nSlide 5: Títulos com letra bold — simples mas impactante\n\nFinal: Salva + manda o resultado pra gente ver!')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-blue" style="align-self:flex-start">Lista</span>
-          10 itens de papelaria que toda amante precisa ter
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-blue" style="align-self:flex-start">Lista</span>10 itens de papelaria que toda amante precisa ter</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Se você ainda não tem esses 10 itens, corre pro link na bio"</li>
+          <li><span class="slide-num">C</span>"Se você ainda não tem esses 10 itens, corre pro link na bio"</li>
           <li><span class="slide-num">2</span>Itens 1-5: cada um com foto, nome e por que é indispensável</li>
           <li><span class="slide-num">3</span>Itens 6-10: dica de uso prático de cada um</li>
           <li><span class="slide-num">4</span>Destaque especial: o item surpresa da lista</li>
-          <li><span class="slide-num">F</span>CTA: "Qual você já tem? Qual está faltando? Conta nos comentários!"</li>
+          <li><span class="slide-num">F</span>"Qual você já tem? Qual está faltando? Conta!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, '10 ITENS DE PAPELARIA QUE TODA AMANTE PRECISA TER\n\nCapa: Se você ainda não tem esses 10 itens, corre pro link na bio\n\nSlides 2-6: Itens 1-5 — cada um com foto, nome e por que é indispensável\n\nSlides 7-11: Itens 6-10 — dica de uso prático de cada um\n\nSlide final: Qual você já tem? Qual está faltando? Conta nos comentários!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'10 ITENS QUE TODA AMANTE PRECISA TER\n\nCapa: Se você ainda não tem esses 10 itens, corre pro link na bio\n\nSlides 2-6: Itens 1-5 com foto, nome e por que é indispensável\nSlides 7-11: Itens 6-10 com dica de uso prático\nSlide especial: O item surpresa da lista\n\nFinal: Qual você já tem? Qual está faltando?')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-purple" style="align-self:flex-start">Unboxing</span>
-          O que tem no nosso novo kit presente
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Unboxing</span>O que tem no nosso novo kit presente</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Abrindo o kit mais fofo que a gente já montou 🎁✨"</li>
+          <li><span class="slide-num">C</span>"Abrindo o kit mais fofo que a gente já montou 🎁✨"</li>
           <li><span class="slide-num">2</span>A caixa — primeira impressão conta muito</li>
           <li><span class="slide-num">3</span>Item 1 com destaque e descrição detalhada</li>
-          <li><span class="slide-num">4</span>Item 2 com destaque</li>
-          <li><span class="slide-num">5</span>Item 3 + brinde surpresa revelado</li>
-          <li><span class="slide-num">F</span>CTA: Preço + como pedir + urgência de estoque</li>
+          <li><span class="slide-num">4</span>Item 2 + item 3 com destaque</li>
+          <li><span class="slide-num">5</span>Brinde surpresa revelado</li>
+          <li><span class="slide-num">F</span>Preço + como pedir + urgência de estoque</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'O QUE TEM NO NOSSO NOVO KIT PRESENTE\n\nCapa: Abrindo o kit mais fofo que a gente já montou!\n\nSlide 2: A caixa — primeira impressão conta muito\n\nSlide 3: Item 1 com destaque e descrição detalhada\n\nSlide 4: Item 2 com destaque\n\nSlide 5: Item 3 + brinde surpresa revelado\n\nSlide final: Preço + como pedir + urgência de estoque')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'O QUE TEM NO NOSSO KIT PRESENTE\n\nCapa: Abrindo o kit mais fofo que a gente já montou!\n\nSlide 2: A caixa — primeira impressão conta muito\nSlide 3: Item 1 com destaque e descrição\nSlide 4: Itens 2 e 3 em destaque\nSlide 5: Brinde surpresa revelado\n\nFinal: Preço + como pedir + urgência de estoque')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-amber" style="align-self:flex-start">Dicas</span>
-          Como organizar sua coleção de adesivos
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">Dicas</span>Como organizar sua coleção de adesivos</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "A coleção de stickers saiu do controle? Esse carrossel salvou a minha 😅"</li>
+          <li><span class="slide-num">C</span>"A coleção de stickers saiu do controle? Esse carrossel salvou a minha 😅"</li>
           <li><span class="slide-num">2</span>Método 1 — livro de stickers (álbum fosco A5)</li>
           <li><span class="slide-num">3</span>Método 2 — arquivo transparente por tema</li>
           <li><span class="slide-num">4</span>Método 3 — folhas soltas em fichário decorado</li>
-          <li><span class="slide-num">5</span>Dica bônus: fotografe antes de usar — memória fofa!</li>
-          <li><span class="slide-num">F</span>CTA: "Qual método você usa? Tem algum diferente? Conta!"</li>
+          <li><span class="slide-num">5</span>Dica bônus: fotografe antes de usar!</li>
+          <li><span class="slide-num">F</span>"Qual método você usa? Conta!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'COMO ORGANIZAR SUA COLEÇÃO DE ADESIVOS\n\nCapa: A coleção de stickers saiu do controle? Esse carrossel salvou a minha!\n\nSlide 2: Método 1 — livro de stickers (álbum fosco A5)\n\nSlide 3: Método 2 — arquivo transparente por tema\n\nSlide 4: Método 3 — folhas soltas em fichário decorado\n\nSlide 5: Dica bônus: fotografe antes de usar — memória fofa!\n\nSlide final: Qual método você usa? Tem algum diferente? Conta!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'COMO ORGANIZAR SUA COLEÇÃO DE ADESIVOS\n\nCapa: A coleção de stickers saiu do controle? Esse carrossel salvou a minha!\n\nSlide 2: Método 1 — livro de stickers\nSlide 3: Método 2 — arquivo transparente por tema\nSlide 4: Método 3 — folhas soltas em fichário\nSlide 5: Dica bônus: fotografe antes de usar!\n\nFinal: Qual método você usa?')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-pink" style="align-self:flex-start">Behind the scenes</span>
-          Como os nossos produtos chegam até você
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Behind the scenes</span>Como os nossos produtos chegam até você</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Do fornecedor à sua porta — o caminho do amor 🩷"</li>
-          <li><span class="slide-num">2</span>Seleção de produtos — o que a gente observa antes de vender</li>
+          <li><span class="slide-num">C</span>"Do fornecedor à sua porta — o caminho do amor 🩷"</li>
+          <li><span class="slide-num">2</span>Seleção de produtos — o que observamos antes de vender</li>
           <li><span class="slide-num">3</span>Embalagem — cada detalhe pensado com carinho</li>
           <li><span class="slide-num">4</span>Controle de qualidade antes de enviar</li>
           <li><span class="slide-num">5</span>A alegria de ver o unboxing de vocês nos stories!</li>
-          <li><span class="slide-num">F</span>CTA: "Marca a gente quando abrir o seu pedido 🎀"</li>
+          <li><span class="slide-num">F</span>"Marca a gente quando abrir o seu pedido 🎀"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'COMO OS NOSSOS PRODUTOS CHEGAM ATÉ VOCÊ\n\nCapa: Do fornecedor à sua porta — o caminho do amor!\n\nSlide 2: Seleção de produtos — o que a gente observa antes de vender\n\nSlide 3: Embalagem — cada detalhe pensado com carinho\n\nSlide 4: Controle de qualidade antes de enviar\n\nSlide 5: A alegria de ver o unboxing de vocês nos stories!\n\nSlide final: Marca a gente quando abrir o seu pedido!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'COMO NOSSOS PRODUTOS CHEGAM ATÉ VOCÊ\n\nCapa: Do fornecedor à sua porta — o caminho do amor!\n\nSlide 2: Seleção de produtos\nSlide 3: Embalagem com carinho\nSlide 4: Controle de qualidade antes de enviar\nSlide 5: A alegria de ver o unboxing!\n\nFinal: Marca a gente quando abrir o seu pedido!')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-teal" style="align-self:flex-start">Bullet Journal</span>
-          Começando seu bujo do zero
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Bullet Journal</span>Começando seu bujo do zero</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Nunca fiz bullet journal? Começa aqui 📓 (é mais simples do que parece)"</li>
+          <li><span class="slide-num">C</span>"Nunca fiz bullet journal? Começa aqui (é mais simples do que parece)"</li>
           <li><span class="slide-num">2</span>O que é bujo e por que todo mundo ama</li>
           <li><span class="slide-num">3</span>O básico: index, future log, monthly log e daily log</li>
           <li><span class="slide-num">4</span>Materiais necessários (spoiler: não precisa de muito)</li>
           <li><span class="slide-num">5</span>Seu primeiro spread — passo a passo simplificado</li>
-          <li><span class="slide-num">F</span>CTA: "Salva + manda o seu primeiro spread pra gente ver!"</li>
+          <li><span class="slide-num">F</span>"Salva + manda o seu primeiro spread pra gente ver!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'COMEÇANDO SEU BUJO DO ZERO\n\nCapa: Nunca fiz bullet journal? Começa aqui! (é mais simples do que parece)\n\nSlide 2: O que é bujo e por que todo mundo ama\n\nSlide 3: O básico: index, future log, monthly log e daily log\n\nSlide 4: Materiais necessários (spoiler: não precisa de muito)\n\nSlide 5: Seu primeiro spread — passo a passo simplificado\n\nSlide final: Salva + manda o seu primeiro spread pra gente ver!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'COMEÇANDO SEU BUJO DO ZERO\n\nCapa: Nunca fiz bullet journal? Começa aqui!\n\nSlide 2: O que é bujo e por que todo mundo ama\nSlide 3: O básico: index, future log, monthly e daily log\nSlide 4: Materiais necessários\nSlide 5: Seu primeiro spread — passo a passo\n\nFinal: Salva + manda o seu primeiro spread!')">📋 Copiar roteiro</button>
       </div>
 
       <div class="carousel-card">
-        <div class="carousel-title">
-          <span class="card-tag tag-blue" style="align-self:flex-start">Presentes</span>
-          Papelaria perfeita pra cada ocasião
-        </div>
+        <div class="carousel-title"><span class="card-tag tag-blue" style="align-self:flex-start">Presentes</span>Papelaria perfeita pra cada ocasião</div>
         <ul class="slide-list">
-          <li><span class="slide-num">C</span>Capa: "Você vai usar esse post pra qualquer presentinho que precisar 🎁"</li>
+          <li><span class="slide-num">C</span>"Você vai usar esse post pra qualquer presentinho que precisar 🎁"</li>
           <li><span class="slide-num">2</span>Aniversário de amiga — kit personalizado com nome</li>
           <li><span class="slide-num">3</span>Dia dos professores — agenda + caneta especial</li>
           <li><span class="slide-num">4</span>Volta às aulas — kit completo funcional e fofo</li>
           <li><span class="slide-num">5</span>Natal / amigo secreto — opções pra todo orçamento</li>
-          <li><span class="slide-num">F</span>CTA: "Salva esse post e nunca mais fica sem ideia de presente!"</li>
+          <li><span class="slide-num">F</span>"Salva esse post e nunca mais fica sem ideia!"</li>
         </ul>
-        <button class="copy-btn" onclick="copyCarousel(this, 'PAPELARIA PERFEITA PRA CADA OCASIÃO\n\nCapa: Você vai usar esse post pra qualquer presentinho que precisar!\n\nSlide 2: Aniversário de amiga — kit personalizado com nome\n\nSlide 3: Dia dos professores — agenda + caneta especial\n\nSlide 4: Volta às aulas — kit completo funcional e fofo\n\nSlide 5: Natal / amigo secreto — opções pra todo orçamento\n\nSlide final: Salva esse post e nunca mais fica sem ideia de presente!')">📋 Copiar roteiro</button>
+        <button class="copy-btn" onclick="copyText(this,'PAPELARIA PERFEITA PRA CADA OCASIÃO\n\nCapa: Você vai usar esse post pra qualquer presentinho!\n\nSlide 2: Aniversário de amiga — kit personalizado\nSlide 3: Dia dos professores — agenda + caneta\nSlide 4: Volta às aulas — kit completo e fofo\nSlide 5: Natal / amigo secreto — pra todo orçamento\n\nFinal: Salva e nunca mais fica sem ideia!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-green" style="align-self:flex-start">Produtividade</span>Método Pomodoro com papelaria fofa</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"A técnica que vai mudar seu estudo — e fica ainda melhor com papelaria"</li>
+          <li><span class="slide-num">2</span>O que é o método Pomodoro (25min foco + 5min pausa)</li>
+          <li><span class="slide-num">3</span>Como rastrear seus pomodoros no bujo ou planner</li>
+          <li><span class="slide-num">4</span>Adesivos de rastreamento + canetas coloridas por disciplina</li>
+          <li><span class="slide-num">5</span>Template grátis — como montar na sua agenda</li>
+          <li><span class="slide-num">F</span>"Salva + testa hoje! Conta o resultado 🍅"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'MÉTODO POMODORO COM PAPELARIA FOFA\n\nCapa: A técnica que vai mudar seu estudo!\n\nSlide 2: O que é o método Pomodoro\nSlide 3: Como rastrear pomodoros no bujo ou planner\nSlide 4: Adesivos de rastreamento + canetas coloridas\nSlide 5: Template — como montar na sua agenda\n\nFinal: Salva + testa hoje! Conta o resultado 🍅')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">Comparativo</span>Qual caderno é ideal pra você?</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Antes de comprar, descobre qual é o seu tipo de caderno"</li>
+          <li><span class="slide-num">2</span>Pautado — ideal pra quem escreve muito e quer uniformidade</li>
+          <li><span class="slide-num">3</span>Pontilhado — perfeito pro bullet journal e lettering</li>
+          <li><span class="slide-num">4</span>Quadriculado — favorito dos que amam diagramas e desenho técnico</li>
+          <li><span class="slide-num">5</span>Sem pauta — liberdade total para artistas e criativos</li>
+          <li><span class="slide-num">F</span>"Qual é o seu? Comenta abaixo! 📓"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'QUAL CADERNO É IDEAL PRA VOCÊ?\n\nCapa: Antes de comprar, descobre qual é o seu tipo!\n\nSlide 2: Pautado — ideal pra quem escreve muito\nSlide 3: Pontilhado — perfeito pro bullet journal\nSlide 4: Quadriculado — favorito para diagramas\nSlide 5: Sem pauta — liberdade total para criativos\n\nFinal: Qual é o seu? Comenta abaixo!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Novidade</span>Lançamento da nova coleção — slide a slide</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Chegou! Nossa nova coleção foi feita pra você 🌸"</li>
+          <li><span class="slide-num">2</span>A inspiração por trás da coleção (tema/paleta)</li>
+          <li><span class="slide-num">3</span>Produto destaque #1 — close e detalhes</li>
+          <li><span class="slide-num">4</span>Produto destaque #2 + como usar</li>
+          <li><span class="slide-num">5</span>Produto destaque #3 + combo sugerido</li>
+          <li><span class="slide-num">F</span>"Link na bio! Disponível agora 💕"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'LANÇAMENTO DA NOVA COLEÇÃO\n\nCapa: Chegou! Nossa nova coleção foi feita pra você!\n\nSlide 2: A inspiração por trás da coleção\nSlide 3: Produto destaque #1 — close e detalhes\nSlide 4: Produto destaque #2 + como usar\nSlide 5: Produto destaque #3 + combo sugerido\n\nFinal: Link na bio! Disponível agora!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Autoconhecimento</span>Seu estilo de planejamento revela sua personalidade</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Como você planeja diz muito sobre quem você é 🌟"</li>
+          <li><span class="slide-num">2</span>Planner digital: você é praticidade e velocidade</li>
+          <li><span class="slide-num">3</span>Caderno sem pauta: criativa, intuitiva e visual</li>
+          <li><span class="slide-num">4</span>Planner com layout fixo: você ama estrutura e rotina</li>
+          <li><span class="slide-num">5</span>Bujo customizado: perfeccionista, detalhista e artística</li>
+          <li><span class="slide-num">F</span>"Qual é o seu? Marca uma amiga que se identifica!"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'SEU ESTILO DE PLANEJAMENTO REVELA SUA PERSONALIDADE\n\nCapa: Como você planeja diz muito sobre quem você é!\n\nSlide 2: Planner digital — praticidade e velocidade\nSlide 3: Caderno sem pauta — criativa e visual\nSlide 4: Layout fixo — ama estrutura e rotina\nSlide 5: Bujo customizado — perfeccionista e artística\n\nFinal: Qual é o seu? Marca uma amiga!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-green" style="align-self:flex-start">Rotina</span>Rotina matinal de 15 minutos com papelaria</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"15 minutos que vão transformar o seu dia inteiro ☀️"</li>
+          <li><span class="slide-num">2</span>3 min: abrir o caderno e escrever como você se sente</li>
+          <li><span class="slide-num">3</span>5 min: listar 3 prioridades do dia no planner</li>
+          <li><span class="slide-num">4</span>4 min: revisar compromissos e preencher a agenda</li>
+          <li><span class="slide-num">5</span>3 min: escrever uma intenção ou afirmação positiva</li>
+          <li><span class="slide-num">F</span>"Salva e testa amanhã! Conta se funcionou 🌿"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'ROTINA MATINAL DE 15 MINUTOS\n\nCapa: 15 minutos que vão transformar o seu dia!\n\nSlide 2: 3 min — escrever como você se sente\nSlide 3: 5 min — listar 3 prioridades no planner\nSlide 4: 4 min — revisar compromissos\nSlide 5: 3 min — escrever uma intenção positiva\n\nFinal: Salva e testa amanhã!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-blue" style="align-self:flex-start">FAQ</span>Perguntas mais frequentes sobre nossa loja</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Tudo que você queria saber sobre a gente 🩷"</li>
+          <li><span class="slide-num">2</span>Como funciona o envio e prazo de entrega?</li>
+          <li><span class="slide-num">3</span>Aceita troca ou devolução?</li>
+          <li><span class="slide-num">4</span>Tem opção de embalagem para presente?</li>
+          <li><span class="slide-num">5</span>Como entrar em contato com a gente?</li>
+          <li><span class="slide-num">F</span>"Mais dúvidas? Manda mensagem! Respondemos tudo 💕"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'FAQ DA NOSSA LOJA\n\nCapa: Tudo que você queria saber sobre a gente!\n\nSlide 2: Como funciona o envio e prazo?\nSlide 3: Aceita troca ou devolução?\nSlide 4: Tem embalagem para presente?\nSlide 5: Como entrar em contato?\n\nFinal: Mais dúvidas? Manda mensagem!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Lettering</span>Aprenda lettering básico com 5 técnicas simples</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Você não precisa de talento, só de prática e caneta certa 🖊️"</li>
+          <li><span class="slide-num">2</span>Técnica 1: downstroke grosso, upstroke fino</li>
+          <li><span class="slide-num">3</span>Técnica 2: letras conectadas em cursivo fluido</li>
+          <li><span class="slide-num">4</span>Técnica 3: sombra lateral para efeito 3D</li>
+          <li><span class="slide-num">5</span>Técnica 4: bounce letters — letras dançando</li>
+          <li><span class="slide-num">F</span>"Qual caneta usar? Temos as melhores — link na bio!"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'LETTERING BÁSICO — 5 TÉCNICAS SIMPLES\n\nCapa: Você não precisa de talento, só de prática!\n\nSlide 2: Downstroke grosso, upstroke fino\nSlide 3: Letras conectadas em cursivo fluido\nSlide 4: Sombra lateral para efeito 3D\nSlide 5: Bounce letters — letras dançando\n\nFinal: Temos as melhores canetas — link na bio!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">Tendência</span>Tendências de papelaria para este ano</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"O que está bombando na papelaria esse ano 🔥🎀"</li>
+          <li><span class="slide-num">2</span>Paletas terrosas e neutras no lugar do pastel</li>
+          <li><span class="slide-num">3</span>Journaling terapêutico: escrever pra curar</li>
+          <li><span class="slide-num">4</span>Materiais reutilizáveis e sustentáveis</li>
+          <li><span class="slide-num">5</span>Digitalização do bujo com tablets e canetas stylus</li>
+          <li><span class="slide-num">F</span>"Qual tendência você já adotou? Comenta!"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'TENDÊNCIAS DE PAPELARIA DO ANO\n\nCapa: O que está bombando na papelaria!\n\nSlide 2: Paletas terrosas e neutras\nSlide 3: Journaling terapêutico\nSlide 4: Materiais reutilizáveis e sustentáveis\nSlide 5: Digitalização do bujo\n\nFinal: Qual você já adotou?')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Comunidade</span>As 5 regras não escritas das amantes de papelaria</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Toda papelaria lover sabe disso (mesmo sem falar em voz alta 😂)"</li>
+          <li><span class="slide-num">2</span>Nunca emprestar sua caneta favorita</li>
+          <li><span class="slide-num">3</span>Comprar "só mais um caderno" é sempre uma mentira</li>
+          <li><span class="slide-num">4</span>O cheiro de papel novo é incomparável</li>
+          <li><span class="slide-num">5</span>Toda papelaria de aeroporto deve ser inspecionada</li>
+          <li><span class="slide-num">F</span>"Marca uma amiga que segue todas essas regras 😄"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'REGRAS NÃO ESCRITAS DAS AMANTES DE PAPELARIA\n\nCapa: Toda papelaria lover sabe disso!\n\nSlide 2: Nunca emprestar sua caneta favorita\nSlide 3: "Só mais um caderno" é sempre mentira\nSlide 4: O cheiro de papel novo é incomparável\nSlide 5: Toda papelaria de aeroporto deve ser inspecionada\n\nFinal: Marca uma amiga que segue todas essas regras!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Autoconhecimento</span>Como o journaling mudou minha vida</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Não acreditava em journaling até isso acontecer comigo 🥹"</li>
+          <li><span class="slide-num">2</span>Comecei escrevendo 3 linhas. Hoje escrevo páginas</li>
+          <li><span class="slide-num">3</span>Aprendi a identificar padrões de pensamento negativos</li>
+          <li><span class="slide-num">4</span>Minha ansiedade diminuiu visivelmente</li>
+          <li><span class="slide-num">5</span>Passei a me conhecer de verdade</li>
+          <li><span class="slide-num">F</span>"Quer começar? Temos o caderno perfeito pra isso 🌸"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'COMO O JOURNALING MUDOU MINHA VIDA\n\nCapa: Não acreditava em journaling até isso acontecer comigo\n\nSlide 2: Comecei com 3 linhas. Hoje escrevo páginas\nSlide 3: Aprendi a identificar padrões negativos\nSlide 4: Minha ansiedade diminuiu\nSlide 5: Passei a me conhecer de verdade\n\nFinal: Quer começar? Temos o caderno perfeito!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="carousel-card">
+        <div class="carousel-title"><span class="card-tag tag-green" style="align-self:flex-start">Dica Rápida</span>3 erros que estragam seu planner (e como evitar)</div>
+        <ul class="slide-list">
+          <li><span class="slide-num">C</span>"Se você para de usar o planner no meio do mês, esse carrossel é pra você"</li>
+          <li><span class="slide-num">2</span>Erro 1: colocar tarefas demais e se sobrecarregar</li>
+          <li><span class="slide-num">3</span>Erro 2: não revisar o que não foi feito</li>
+          <li><span class="slide-num">4</span>Erro 3: usar um formato que não combina com você</li>
+          <li><span class="slide-num">5</span>Solução para cada erro — dica prática</li>
+          <li><span class="slide-num">F</span>"Salva + qual erro você começa a corrigir hoje?"</li>
+        </ul>
+        <button class="copy-btn" onclick="copyText(this,'3 ERROS QUE ESTRAGAM SEU PLANNER\n\nCapa: Se você para de usar o planner no meio do mês, isso é pra você!\n\nSlide 2: Erro 1 — tarefas demais\nSlide 3: Erro 2 — não revisar o que não foi feito\nSlide 4: Erro 3 — formato errado pra você\nSlide 5: Solução prática para cada erro\n\nFinal: Qual erro você começa a corrigir hoje?')">📋 Copiar roteiro</button>
       </div>
 
     </div>
@@ -992,68 +724,287 @@
   <!-- ===== HASHTAGS ===== -->
   <div id="hashtags" class="section">
     <div class="section-header">
-      <div class="section-title">Sets de hashtags <span class="count-badge">8 sets</span></div>
+      <div class="section-title">Sets de hashtags <span class="count-badge">14 sets</span></div>
     </div>
     <div class="cards-grid">
 
-      <div class="card">
-        <span class="card-tag tag-pink">Geral papelaria</span>
-        <p class="hashtag-text">#papelaria #papelariafofa #papelariaonline #amopapelaria #papelariabrasileira #papelariafofinha #stationerylover #stationery #stationeryaddict #stationeryhaul #stationerylove</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="card"><span class="card-tag tag-pink">Geral papelaria</span><p class="hashtag-text">#papelaria #papelariafofa #papelariaonline #amopapelaria #papelariabrasileira #papelariafofinha #stationerylover #stationery #stationeryaddict #stationeryhaul #stationerylove</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Organização</span><p class="hashtag-text">#organizacao #organizacaocriativa #planejamento #planner #planneraddict #plannerlover #plannerobsessed #agendafofa #organizese #produtividade #rotina</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Bullet journal</span><p class="hashtag-text">#bulletjournal #bujo #bujobrasileiro #bujobrasil #bulletjournalbrasil #bulletjournalcommunity #bulletjournallove #journaling #journalinspiration #notebooklover</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Estudos</span><p class="hashtag-text">#studygram #studymotivation #studytips #estudando #estudos #meuestudo #setupdeestudos #estudante #estudomuda #focoemestudos #academiadeestudos</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Lançamento / produto</span><p class="hashtag-text">#novidade #lancamento #novidades #chegounaloja #produtofoto #lojafofinha #comprasonline #comprasfofa #lojaonline #chegou #linknabio</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Kawaii</span><p class="hashtag-text">#kawaii #kawaiilife #kawaiistyle #kawaiiaesthetic #kawaiilover #japanstationery #japanesestationery #papeleriajaponesa #cute #cutestationery #adorable</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Aesthetic / desk</span><p class="hashtag-text">#desksetup #deskgoals #deskinspo #workdesk #aesthetic #aestheticdesk #cozyhome #homeoffice #homeofficesetup #workspace #pinkdesk #pinksetup</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Presente / gifting</span><p class="hashtag-text">#presente #ideiasepresentes #presenteperfeito #giftideas #gifting #kitpresente #presentes #presentinho #ideiasdepresente #giftwrapping #unboxing</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-green">Pequenas empresas</span><p class="hashtag-text">#pequenasempresas #empreendedora #lojafofinha #shopsmall #smallbusiness #negociosonline #empreendedorismofeminino #mulheresquefazem #feito com amor</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-amber">Journaling</span><p class="hashtag-text">#journaling #journalinspiration #journallover #journalcommunity #journaltherapy #writingcommunity #diario #escrever #escritadecaderno #mindfulness</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-pink">Fita washi</span><p class="hashtag-text">#washitape #washitapelover #washitapeaddict #washitapecollection #maskingtape #papelariajapanesa #tapecollection #scrapbooking #craftsupplies</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-blue">Lifestyle / rotina</span><p class="hashtag-text">#lifestyle #rotinasaudavel #morningroutine #nightroutine #selfcare #autocuidado #habittracker #modoaviao #modofoco #vidarotineira</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-teal">Volta às aulas</span><p class="hashtag-text">#voltaaulas #voltasaeulas #escolafofa #cadernodecorado #materiaescolar #escolaestilo #mochilafoda #voltapraescola #preparados #novoano #anoescolar</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+      <div class="card"><span class="card-tag tag-purple">Autocuidado</span><p class="hashtag-text">#autocuidado #selfcare #bemestar #saúdemental #mindfulness #gratidão #diariodegratidao #cuidarsedesi #vidaequilibrada #euvouembemviver</p><button class="copy-btn" onclick="copyCard(this,true)">📋 Copiar</button></div>
+
+    </div>
+  </div>
+
+  <!-- ===== STORIES ===== -->
+  <div id="stories" class="section">
+    <div class="section-header">
+      <div class="section-title">Ideias de Stories <span class="count-badge">30</span></div>
+    </div>
+    <div class="stories-grid">
+
+      <div class="story-card"><span class="card-tag tag-pink">Enquete</span><p class="story-text">📊 ENQUETE DO DIA: Você planeja sua semana com antecedência?<br><br>✅ Sim, toda semana!<br>❌ Quando lembro 😅</p><div class="story-tip">💡 Dica: após a enquete, reposte com o resultado e aproveite pra mostrar seu planner favorito</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-purple">Pergunta aberta</span><p class="story-text">🌸 PERGUNTA DO DIA<br><br>Qual item de papelaria você nunca sai de casa sem levar? 👇<br><br>(Respondam aqui, adoramos ler tudo!)</p><div class="story-tip">💡 Dica: reposte as respostas mais fofas e engaje com cada uma individualmente</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-teal">Tutorial rápido</span><p class="story-text">✨ DICA RÁPIDA<br><br>Usa fita washi na borda do caderno pra criar separadores coloridos! 🎀<br><br>Fica lindo e organizado ao mesmo tempo. Temos vários padrões — link na bio!</p><div class="story-tip">💡 Dica: grave um vídeo de 10s mostrando o processo — muito mais impacto!</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-amber">Contagem regressiva</span><p class="story-text">⏳ LANÇAMENTO EM...<br><br>🌸 Amanhã às 10h<br><br>Uma coisa nova e muito fofa chega pra vocês! Ativa o sininho e não perde! 🔔</p><div class="story-tip">💡 Dica: use o adesivo de contagem regressiva do Instagram para mais engajamento</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-blue">Favorito do dia</span><p class="story-text">💖 FAVORITO DA SEMANA<br><br>Essa semana a gente não consegue parar de usar:<br><br>📌 [Nome do produto]<br><br>E vocês, qual está na rotina de vocês? Manda mensagem!</p><div class="story-tip">💡 Dica: adicione foto do produto em destaque e link direto para o item</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-green">Bastidores</span><p class="story-text">📦 CHEGOU ESTOQUE NOVO!<br><br>Olha que delícia o que acabou de chegar aqui 🥹✨<br><br>Em 48h esses itens entram no site! Comenta o que mais gostou 👇</p><div class="story-tip">💡 Dica: faça um vídeo desembalando a caixa — conteúdo muito autêntico e engajante</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-pink">Isso ou aquilo</span><p class="story-text">🤔 ISSO OU AQUILO?<br><br>📓 Caderno espiral<br>   ou<br>📒 Caderno capa dura?<br><br>Comenta aqui qual você prefere e por quê!</p><div class="story-tip">💡 Dica: use o adesivo de enquete do IG para mais interações rápidas</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-purple">Motivacional</span><p class="story-text">🌷 PARA VOCÊ QUE ESTÁ RECOMEÇANDO<br><br>Um caderno novo não precisa de data especial.<br><br>Pode começar hoje mesmo ✨<br><br>E a gente tem o caderno perfeito pra isso 🩷</p><div class="story-tip">💡 Dica: fundo com gradiente suave e fonte grande. Ideal para repost!</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-teal">Promoção flash</span><p class="story-text">🚨 SÓ POR 24H<br><br>Frete GRÁTIS em todo o site! 🚚<br><br>Use o cupom: STORYFRETE<br><br>Válido até meia-noite de hoje 🕛<br>Link na bio ⬆️</p><div class="story-tip">💡 Dica: adicione adesivo de contagem regressiva com o horário final</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-amber">Quiz</span><p class="story-text">🎯 QUIZ RÁPIDO<br><br>Quantos cadernos você tem EM CASA agora?<br><br>A) Menos de 5<br>B) Entre 5 e 10<br>C) Mais de 10<br>D) Prefiro não responder 😂</p><div class="story-tip">💡 Dica: use o adesivo de quiz ou enquete. Promete muito engajamento!</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-pink">UGC</span><p class="story-text">📸 MANDA PRA GENTE!<br><br>Chegou seu pedido?<br>Tira uma foto fofinha do unboxing e nos marca! 🎀<br><br>Os melhores aparecem aqui nos stories 🌸</p><div class="story-tip">💡 Dica: reposte UGC toda semana — prova social aumenta conversão</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-blue">Setup da semana</span><p class="story-text">📚 SETUP DA SEMANA<br><br>Essa é a mesa de trabalho da [nome da cliente]<br>Ela nos marcou e a gente se apaixonou 🥹<br><br>Olha que fofo! 🩷<br><br>Quer ver o seu aqui? Nos marca!</p><div class="story-tip">💡 Dica: peça permissão antes de repostar e marque a cliente sempre</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-green">Rotina de domingo</span><p class="story-text">☀️ DOMINGO DE PLANEJAMENTO<br><br>Hoje é dia de:<br>✅ Abrir a agenda<br>✅ Revisar a semana que passou<br>✅ Planejar a próxima<br><br>Você já fez isso hoje? 👇</p><div class="story-tip">💡 Dica: poste sempre domingo de manhã — horário de alto engajamento!</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-purple">Avaliação</span><p class="story-text">⭐ O QUE ACHARAM?<br><br>Vocês que compraram o [produto] — o que estão achando?<br><br>Manda mensagem aqui! A gente lê todos 🩷<br><br>Sua opinião faz toda a diferença pra nós 🌸</p><div class="story-tip">💡 Dica: use as respostas positivas como prova social em outros stories</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-teal">Dica de uso</span><p class="story-text">💡 DICA DO DIA<br><br>Usa post-its de tamanhos diferentes pra criar um sistema de prioridades:<br><br>🔴 Grande = urgente<br>🟡 Médio = importante<br>🟢 Pequeno = pode esperar<br><br>Simples e eficaz! Temos kits no link da bio ✨</p><div class="story-tip">💡 Dica: salva esse formato — funciona muito bem pra educação + venda</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-amber">Lista de desejos</span><p class="story-text">📝 MONTE SUA WISHLIST<br><br>Esses são os itens mais desejados da semana 🛍️<br><br>1️⃣ [item]<br>2️⃣ [item]<br>3️⃣ [item]<br><br>Qual está na sua lista? Link na bio para garantir o seu! 🎀</p><div class="story-tip">💡 Dica: inclua o preço de cada item para facilitar a decisão de compra</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-pink">Novidade amanhã</span><p class="story-text">🤫 TEM COISA NOVA CHEGANDO<br><br>Não vou falar muito não...<br><br>Mas ativa o sininho 🔔<br>Lança amanhã às 10h<br><br>Vai ser difícil escolher só um 🩷</p><div class="story-tip">💡 Dica: mostre apenas um detalhe do produto pra gerar curiosidade</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-blue">Comparativo rápido</span><p class="story-text">🆚 COMPARATIVO<br><br>Caneta 0.5 vs Caneta 0.7<br><br>✏️ 0.5: ideal pra detalhe e lettering<br>✏️ 0.7: perfeita pra escrita rápida<br><br>Qual você usa no dia a dia? Comenta aqui 👇</p><div class="story-tip">💡 Dica: mostre as duas canetas escrevendo — conteúdo de valor que gera cliques</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-green">Bastidores emocional</span><p class="story-text">🥹 UM RECADO DA GENTE<br><br>Cada pedido que embalamos tem um pedaço do nosso coração.<br><br>Obrigada por confiar no nosso trabalho.<br>Vocês são a razão de tudo isso 💕</p><div class="story-tip">💡 Dica: posts emocionais geram salvas e compartilhamentos. Use com frequência!</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-purple">Educativo rápido</span><p class="story-text">📖 VOCÊ SABIA?<br><br>A fita washi foi criada no Japão em 2006!<br><br>Veio de mascaramento industrial e virou febre mundial de papelaria 🎀<br><br>Hoje temos mais de 30 padrões na loja — link na bio!</p><div class="story-tip">💡 Dica: facts rápidos geram saves e compartilhamentos — ótimo para alcance</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-teal">Antes e depois</span><p class="story-text">✨ ANTES E DEPOIS<br><br>Mesa bagunçada 😅 vs Mesa organizada com papelaria fofa 🌸<br><br>A diferença que um porta-canetas e um planner fazem é surreal!<br><br>Você também consegue isso — link na bio 🎀</p><div class="story-tip">💡 Dica: use fotos reais de clientes (com permissão) para mais autenticidade</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-amber">Restock urgente</span><p class="story-text">🚨 VOLTOU! MAS POR POUCO TEMPO<br><br>O item mais pedido das últimas semanas está de volta ao estoque!<br><br>⚠️ Últimas unidades disponíveis<br><br>Link na bio pra garantir antes de esgotar! 🏃‍♀️</p><div class="story-tip">💡 Dica: sempre que mencionar escassez, seja honesta — constrói confiança</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-pink">Rotina noturna</span><p class="story-text">🌙 ROTINA NOTURNA DA PAPELARIA LOVER<br><br>Antes de dormir:<br>📝 Reviso o que fiz hoje<br>📅 Preparo a lista de amanhã<br>🖊️ Escrevo uma coisa boa que aconteceu<br><br>Você faz algo parecido? 🌸</p><div class="story-tip">💡 Dica: mostre sua própria agenda enquanto narra — content muito autêntico</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-blue">Depoimento</span><p class="story-text">💬 O QUE DISSERAM DA GENTE<br><br>"[copiar depoimento real de cliente]"<br><br>— @[nome da cliente] 🌸<br><br>Isso é o que faz tudo valer a pena 🥹💕<br>Obrigada pela confiança!</p><div class="story-tip">💡 Dica: peça depoimentos via enquete nos stories — muito mais fácil de coletar</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-green">Curiosidade</span><p class="story-text">🧠 CURIOSIDADE DO DIA<br><br>Escrever à mão ativa áreas do cérebro ligadas à memória e criatividade que a digitação não consegue atingir!<br><br>Mais um motivo pra amar papelaria 📓✨<br><br>Salva pra lembrar quando alguém questionar sua coleção 😄</p><div class="story-tip">💡 Dica: curiosidades científicas geram muitos compartilhamentos e salvamentos</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-purple">Votação nova coleção</span><p class="story-text">🗳️ VOCÊS DECIDEM<br><br>Qual tema você prefere pra nossa próxima coleção?<br><br>🌸 Floral japonês<br>🌿 Natureza minimalista<br><br>Vota aqui! A mais votada a gente faz 🎀</p><div class="story-tip">💡 Dica: envolver a audiência nas decisões gera pertencimento e lealdade à marca</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-teal">Kit do mês</span><p class="story-text">🎁 KIT DO MÊS<br><br>Montamos um kit especial com os itens mais amados desse mês!<br><br>📓 Caderno + 🖊️ Canetas + 🎀 Adesivos<br><br>Edição limitada — link na bio pra garantir o seu 🌸</p><div class="story-tip">💡 Dica: kits curados vendem melhor que itens isolados — ótimo para ticket médio</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-amber">5 favoritos</span><p class="story-text">💛 MEUS 5 FAVORITOS DO MÊS<br><br>1️⃣ [produto]<br>2️⃣ [produto]<br>3️⃣ [produto]<br>4️⃣ [produto]<br>5️⃣ [produto]<br><br>Todos disponíveis no site! Link na bio 🛍️</p><div class="story-tip">💡 Dica: listas de favoritos geram muito clique — são como curadoria personalizada</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-pink">Presente prático</span><p class="story-text">🎀 IDEIA DE PRESENTE<br><br>Não sabe o que dar pra quem ama papelaria?<br><br>A gente resolve: escolhe um valor e a gente monta o kit perfeito!<br><br>💌 Manda mensagem aqui ⬇️</p><div class="story-tip">💡 Dica: responda cada mensagem com sugestões personalizadas — converte muito!</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+      <div class="story-card"><span class="card-tag tag-blue">Promoção relâmpago</span><p class="story-text">⚡ PROMOÇÃO RELÂMPAGO<br><br>Próximas 3 horas apenas!<br><br>🎀 15% OFF em toda papelaria fofa<br>Cupom: RELAMPAGO15<br><br>Corre! Já acessa o link na bio 🏃‍♀️✨</p><div class="story-tip">💡 Dica: urgência real (horário definido) funciona muito melhor que "por tempo limitado"</div><button class="copy-btn" onclick="copyStory(this)">📋 Copiar</button></div>
+
+    </div>
+  </div>
+
+  <!-- ===== REELS ===== -->
+  <div id="reels" class="section">
+    <div class="section-header">
+      <div class="section-title">Roteiros de Reels <span class="count-badge">16</span></div>
+    </div>
+    <div class="reels-grid">
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Trending</span>Pack a bag / Organiza comigo</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música trending no momento + ASMR de papelaria</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: mostrar a bolsa vazia sobre a mesa</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2-6: cada item de papelaria sendo colocado um a um (close satisfatório)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe final: bolsa fechada + texto "ready to go 🌸"</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Legenda: Liste cada item no caption com link pra cada produto</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — PACK A BAG\n\nMúsica: trending no momento + ASMR de papelaria\n\nClipe 1: bolsa vazia sobre a mesa\nClipes 2-6: cada item sendo colocado, um a um\nClipe final: bolsa fechada + texto ready to go 🌸\n\nLegenda: Liste cada item com link pro produto')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-teal">Organização</span>
-        <p class="hashtag-text">#organizacao #organizacaocriativa #planejamento #planner #planneraddict #plannerlover #plannerobsessed #agendafofa #organizese #produtividade #rotina</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Satisfatório</span>Organizando a mesa de estudos</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Lo-fi chill ou som ambiente de café</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: mesa bagunçada em 2 segundos (antes)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipes 2-8: transição rápida de cada item sendo organizado</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe final: mesa linda com tudo no lugar (depois)</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Texto on-screen: "@suamarca — papelaria que organiza e inspira"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — ORGANIZANDO A MESA\n\nMúsica: lo-fi chill ou som ambiente de café\n\nClipe 1: mesa bagunçada (antes)\nClipes 2-8: cada item sendo organizado\nClipe final: mesa linda no lugar (depois)\n\nTexto: @suamarca — papelaria que organiza e inspira')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-purple">Bullet journal</span>
-        <p class="hashtag-text">#bulletjournal #bujo #bujobrasileiro #bujobrasil #bulletjournalbrasil #bulletjournalcommunity #bulletjournallove #journaling #journalinspiration #notebooklover</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Educativo</span>Como usar fita washi de 5 formas</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música animada e leve, ritmo médio</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Abertura: close na coleção de washis (2s)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Forma 1: decorar borda de caderno</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Forma 2: separar seções no planner</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Forma 3: embrulhar presente</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Forma 4: decorar garrafa ou caneca</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Forma 5: moldura de fotos na parede</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>CTA final: "Link na bio pra pegar as suas 🎀"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — 5 USOS DA FITA WASHI\n\nMúsica: animada e leve\n\nAbertura: close na coleção de washis\nForma 1: decorar borda de caderno\nForma 2: separar seções no planner\nForma 3: embrulhar presente\nForma 4: decorar garrafa ou caneca\nForma 5: moldura de fotos na parede\n\nCTA: Link na bio pra pegar as suas!')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-amber">Estudos</span>
-        <p class="hashtag-text">#studygram #studymotivation #studytips #estudando #estudos #meuestudo #setupdeestudos #estudante #estudomuda #focoemestudos #academiadeestudos</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">ASMR</span>Unboxing de pedido fofo</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Sem música — apenas som ASMR de embalagem</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: caixa chegando na porta (ou em cima da mesa)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: abrindo com cuidado — som do papel</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipes 3-7: cada item revelado devagar, com close</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe final: tudo organizado junto — foto bonita</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Texto: "Cada pedido é embalado com muito amor 🩷"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — UNBOXING ASMR\n\nAudio: sem música, apenas ASMR de embalagem\n\nClipe 1: caixa chegando\nClipe 2: abrindo com cuidado\nClipes 3-7: cada item revelado devagar\nClipe final: tudo organizado junto\n\nTexto: Cada pedido é embalado com muito amor!')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-blue">Lançamento / produto</span>
-        <p class="hashtag-text">#novidade #lancamento #novidades #chegounaloja #produtofoto #lojafofinha #comprasonline #comprasfofa #lojaonline #chegou #linknabio</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-blue" style="align-self:flex-start">Trending</span>Get ready with me — rotina de planejamento</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música viral do momento (verificar tendências)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: acordo cedo, café na mão</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: abro minha agenda</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 3: pego canetas favoritas e planejo o dia</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 4: escrevo gratidão e intenção do dia</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe final: pronta pro dia com tudo organizado ✅</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — GRWM PLANEJAMENTO\n\nMúsica: viral do momento\n\nClipe 1: acordo cedo, café na mão\nClipe 2: abro minha agenda\nClipe 3: pego canetas e planejo o dia\nClipe 4: escrevo gratidão e intenção\nClipe final: pronta pro dia!')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-pink">Kawaii</span>
-        <p class="hashtag-text">#kawaii #kawaiilife #kawaiistyle #kawaiiaesthetic #kawaiilover #japanstationery #japanesestationery #papeleriajaponesa #cute #cutestationery #adorable</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-green" style="align-self:flex-start">Produto</span>Review honesto — testando a caneta gel</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música leve e clean no fundo</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Início: "Testei essa caneta por 1 semana, olha o resultado"</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: escrevendo em papel comum — resultado</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: testando em papel pontilhado</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 3: check se borra (teste com dedo)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Final: nota 10/10 — link na bio 🖊️</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — REVIEW CANETA GEL\n\nMúsica: leve e clean\n\nInício: testei essa caneta por 1 semana\nClipe 1: escrevendo em papel comum\nClipe 2: testando em papel pontilhado\nClipe 3: teste de borrão\nFinal: nota 10/10 — link na bio!')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-teal">Aesthetic / desk</span>
-        <p class="hashtag-text">#desksetup #deskgoals #deskinspo #workdesk #aesthetic #aestheticdesk #cozyhome #homeoffice #homeofficesetup #workspace #pinkdesk #pinksetup</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Satisfatório</span>Organizando coleção de adesivos</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>ASMR + música soft em baixo volume</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: pilha caótica de adesivos em cima da mesa</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipes 2-6: separando por tema, cor e tipo</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 7: colando no álbum organizador</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Final: álbum completo aberto — muito satisfatório!</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Texto: "Álbum de stickers disponível — link na bio"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — ORGANIZANDO ADESIVOS\n\nMúsica: ASMR + soft music\n\nClipe 1: pilha caótica de stickers\nClipes 2-6: separando por tema e cor\nClipe 7: colando no álbum\nFinal: álbum completo aberto\n\nTexto: Álbum disponível — link na bio!')">📋 Copiar roteiro</button>
       </div>
 
-      <div class="card">
-        <span class="card-tag tag-purple">Presente / gifting</span>
-        <p class="hashtag-text">#presente #ideiasepresentes #presenteperfeito #giftideas #gifting #kitpresente #presentes #presentinho #ideiasdepresente #giftwrapping #unboxing</p>
-        <button class="copy-btn" onclick="copyCard(this, true)">📋 Copiar</button>
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Storytelling</span>Por que eu amo papelaria — história pessoal</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música emocional / inspiracional</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>"Tudo começou quando..." — foto/vídeo nostálgico</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Primeiro caderno que você amou de verdade</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Como a papelaria mudou sua rotina</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Hoje: sua coleção atual com orgulho</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>CTA: "Me conta quando começou seu amor por papelaria 🩷"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — HISTÓRIA PESSOAL\n\nMúsica: emocional/inspiracional\n\nInício: tudo começou quando...\nCena: primeiro caderno amado\nCena: como a papelaria mudou a rotina\nFinal: sua coleção atual com orgulho\n\nCTA: Me conta quando começou seu amor por papelaria!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Comparativo</span>Decorei meu caderno — antes e depois</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música alegre e animada</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: caderno sem decoração (antes)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipes 2-7: processo rápido de decoração (timelapse)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe final: caderno decorado — virada fofa ✨</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Legenda: "Materiais usados: [lista] — tudo no link da bio"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — ANTES E DEPOIS CADERNO\n\nMúsica: alegre e animada\n\nClipe 1: caderno sem decoração\nClipes 2-7: processo de decoração em timelapse\nClipe final: caderno decorado — virada fofa!\n\nLegenda: materiais usados com link')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">Lifestyle</span>Minha rotina de domingo com papelaria</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Lo-fi aconchegante ou jazz suave</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: amanhecer, café sendo preparado</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: abrir a agenda semanal</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 3: revisar a semana passada</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 4: planejar a semana com canetas coloridas</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe final: agenda linda + xícara de café 🌿</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — DOMINGO COM PAPELARIA\n\nMúsica: lo-fi aconchegante\n\nClipe 1: amanhecer, café sendo preparado\nClipe 2: abrir a agenda semanal\nClipe 3: revisar a semana passada\nClipe 4: planejar com canetas coloridas\nClipe final: agenda + xícara de café')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-pink" style="align-self:flex-start">Novidade</span>Lançamento com unboxing cinematográfico</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música dramática com build up + drop no reveal</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: caixa fechada em close</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: fita laço sendo removida lentamente</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>No drop: tampa abre — produto revelado</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipes 3-5: close em cada detalhe do produto</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Texto final: nome do produto + disponível agora + link na bio</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — LANÇAMENTO CINEMATOGRÁFICO\n\nMúsica: build up + drop no reveal\n\nClipe 1: caixa fechada em close\nClipe 2: fita sendo removida\nNo drop: tampa abre — produto revelado!\nClipes 3-5: close em cada detalhe\n\nTexto final: nome + disponível agora + link na bio')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-blue" style="align-self:flex-start">Educativo</span>Como montar um bullet journal do zero</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música criativa e leve, ritmo médio</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: caderno em branco aberto</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Passo 1 (15s): criar o índice</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Passo 2 (15s): future log — próximos 6 meses</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Passo 3 (15s): monthly log bonito e decorado</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Final: bujo pronto — viagem completa em 60s!</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — BUJO DO ZERO\n\nMúsica: criativa e leve\n\nClipe 1: caderno em branco\nPasso 1: criar o índice\nPasso 2: future log\nPasso 3: monthly log\nFinal: bujo pronto!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-green" style="align-self:flex-start">Humor</span>Coisas que toda amante de papelaria faz</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música cômica / trending humorística</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Cena 1: entrar numa papelaria "só pra olhar"</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Cena 2: sair com 12 itens que "não precisava"</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Cena 3: comprar caderno novo antes de terminar o anterior</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Cena 4: ter medo de "sujar" o caderno novo</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>CTA: "Me conta qual você se identificou 😂"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — HUMOR PAPELARIA\n\nMúsica: cômica/trending\n\nCena 1: entrar só pra olhar\nCena 2: sair com 12 itens\nCena 3: comprar caderno antes de terminar o anterior\nCena 4: medo de sujar o caderno novo\n\nCTA: Qual você se identificou? 😂')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-purple" style="align-self:flex-start">Timelapse</span>Preenchendo planner semanal</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Lo-fi estudos ou jazz soft</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: planner aberto em branco (top view)</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: escrevendo metas da semana</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 3: decorando com washi e adesivos</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 4: colorindo com marca-textos pastel</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Final: spread completo — satisfatório demais ✨</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — PREENCHENDO PLANNER\n\nMúsica: lo-fi ou jazz soft\n\nClipe 1: planner em branco\nClipe 2: escrevendo metas\nClipe 3: decorando com washi e adesivos\nClipe 4: colorindo com marca-textos\nFinal: spread completo!')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-teal" style="align-self:flex-start">Dica Rápida</span>3 hacks de papelaria que vão mudar sua vida</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música energética e motivacional</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Hook: "3 hacks que mudaram minha rotina pra sempre"</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Hack 1 (10s): usar cor diferente pra cada projeto</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Hack 2 (10s): post-it na capa como checklist rápido</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Hack 3 (10s): índice colorido por categorias</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Final: "Qual você já usa? Comenta aqui 👇"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — 3 HACKS DE PAPELARIA\n\nMúsica: energética\n\nHook: 3 hacks que mudaram minha rotina!\nHack 1: cor diferente pra cada projeto\nHack 2: post-it na capa como checklist\nHack 3: índice colorido por categorias\n\nFinal: Qual você já usa?')">📋 Copiar roteiro</button>
+      </div>
+
+      <div class="reel-card">
+        <div class="carousel-title"><span class="card-tag tag-amber" style="align-self:flex-start">Behind the scenes</span>Um dia na vida — embalando pedidos</div>
+        <div class="reel-row"><span class="reel-icon">🎵</span><span>Música chill e autêntica</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 1: início do dia — mesa de trabalho</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 2: separando produtos pelos pedidos</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 3: embalando com papel de seda e laço</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 4: escrevendo cartões de agradecimento</span></div>
+        <div class="reel-row"><span class="reel-icon">📸</span><span>Clipe 5: pilha de caixinhas prontas pra envio</span></div>
+        <div class="reel-row"><span class="reel-icon">✍️</span><span>Texto: "Cada caixinha tem um pedaço do nosso amor 🩷"</span></div>
+        <button class="copy-btn" onclick="copyText(this,'ROTEIRO REEL — EMBALANDO PEDIDOS\n\nMúsica: chill e autêntica\n\nClipe 1: início do dia\nClipe 2: separando produtos\nClipe 3: embalando com carinho\nClipe 4: cartões de agradecimento\nClipe 5: caixinhas prontas!\n\nTexto: Cada caixinha tem um pedaço do nosso amor!')">📋 Copiar roteiro</button>
       </div>
 
     </div>
   </div>
 
-  <div class="footer">
-    Feito com <span>♥</span> para a sua papelaria fofa — use à vontade!
-  </div>
-
+  <div class="footer">Feito com <span>♥</span> para a sua papelaria fofa — use à vontade!</div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast">✓ Copiado!</div>
 
 <script>
@@ -1076,7 +1027,7 @@
   function showToast() {
     const t = document.getElementById('toast');
     t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2000);
+    setTimeout(() => t.classList.remove('show'), 2200);
   }
 
   function copyCard(btn, isHashtag) {
@@ -1086,22 +1037,28 @@
       btn.textContent = '✓ Copiado!';
       btn.classList.add('copied');
       showToast();
-      setTimeout(() => {
-        btn.textContent = '📋 Copiar';
-        btn.classList.remove('copied');
-      }, 2000);
+      setTimeout(() => { btn.textContent = '📋 Copiar'; btn.classList.remove('copied'); }, 2000);
     });
   }
 
-  function copyCarousel(btn, text) {
+  function copyText(btn, text) {
     navigator.clipboard.writeText(text).then(() => {
-      btn.textContent = '✓ Roteiro copiado!';
+      const original = btn.textContent;
+      btn.textContent = '✓ Copiado!';
       btn.classList.add('copied');
       showToast();
-      setTimeout(() => {
-        btn.textContent = '📋 Copiar roteiro';
-        btn.classList.remove('copied');
-      }, 2200);
+      setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2200);
+    });
+  }
+
+  function copyStory(btn) {
+    const card = btn.closest('.story-card');
+    const text = card.querySelector('.story-text').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = '✓ Copiado!';
+      btn.classList.add('copied');
+      showToast();
+      setTimeout(() => { btn.textContent = '📋 Copiar'; btn.classList.remove('copied'); }, 2000);
     });
   }
 </script>
